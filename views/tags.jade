@@ -1,0 +1,129 @@
+doctype html
+html(xmlns='http://www.w3.org/1999/xhtml', lang='en', xml:lang='en')
+  include rhead
+
+  body.listing-page.hot-page
+    include bodyStart
+
+    a(name='content')
+    .content(role='main')
+      //-section.infobar.newsletterbar.newsletter-container(hidden='')
+        header
+          h1.subscribe-callout
+            a(href='/newsletter')
+              img(src='//www.redditstatic.com/subscribe-header.svg', alt='subscribe to our newsletter')
+          .subscribe-thanks
+            img(src='//www.redditstatic.com/subscribe-header-thanks.svg', alt="_('thanks for subscribing')")
+          h2.result-message get the best of reddit, delivered once a week
+        form.newsletter-signup.form-v2.c-form-inline(method='post', action='https://www.CoinAwesome.com/api/newsletter.json')
+          input(type='hidden', name='uh', value='')
+          input(type='hidden', name='source', value='newsletterbar')
+          .c-form-group
+            label.screenreader-only(for='email') email:
+            input.c-form-control(value='', name='email', type='email', placeholder='enter your email', data-validate-url='/api/check_email.json', data-validate-on='change blur')
+            .c-form-control-feedback-wrapper.inside-input
+              span.c-form-control-feedback.c-form-control-feedback-throbber
+              span.c-form-control-feedback.c-form-control-feedback-error(title='')
+              span.c-form-control-feedback.c-form-control-feedback-success
+          button.c-btn.c-btn-highlight(type='submit') subscribe
+        a.newsletter-close(href='#', title='close') ×
+      //-.spacer
+        #siteTable_organic.organic-listing.loading
+          .help.help-hoverable
+            | what's this?
+            #spotlight-help.hover-bubble.help-bubble.anchor-top
+              .help-section.help-promoted
+                p
+                  | This sponsored link is an advertisement generated with our 
+                  a(href='http://www.CoinAwesome.com/wiki/selfserve') self-serve advertisement tool
+                  | .
+                p
+                  | Use of this tool is open to all members of CoinAwesome.com, and for as little as $20.00 you can advertise in this area. 
+                  a(href='http://www.CoinAwesome.com/advertising') Get started ›
+              .help-section.help-adserver
+                p
+                  | This is a new ad format that we are currently testing. We often try new types of ads in a limited capacity. If you have feedback, please let us know in the 
+                  a(href='http://www.CoinAwesome.com/r/ads') ads subreddit
+                  | .
+              .help-section.help-organic
+                p
+                  | This area shows new and upcoming links. Vote on links here to help them become popular, and click the forwards and backwards buttons to view more.
+              .help-section.help-interestbar
+                p
+                  | Enter a keyword or topic to discover new subreddits around your interests. Be specific!
+                p
+                  | You can access this tool at any time on the 
+                  a(href='http://www.CoinAwesome.com/subreddits/') /subreddits/
+                  |  page.
+        script.
+          r.spotlight.setup( [], 0.0, true, "CoinAwesome" )
+      .spacer
+        style.
+          body >.content .link .rank, .rank-spacer { width: 6.2ex } body >.content .link .midcol, .midcol-spacer { width: 4.1ex } .adsense-wrap { background-color: #eff7ff; font-size: 18px; padding-left: 6.3ex; padding-right: 5px; };
+          body .pagename a {  background-image: 'http://coinawesome.com/awesome/coinAwesomeBW50.png' !important}
+        #siteTable.sitetable.linklisting
+
+          div 
+            each tag,i in tags
+              span.tag 
+                //- a(href='/t/#{tag}') #{tag}
+                a(href='/t/#{tag}') #{tag} 
+                
+
+            //-if tip.urlData
+              .thing.even.link.self(onclick='')
+                p.parent
+                span.rank #{tip.totalAWE} 
+                .midcol.unvoted
+                  .arrow.up.login-required(onclick='', role='button', aria-label='upvote', tabindex='0')
+                  .score.dislikes 123
+                  .score.unvoted #{tip.txCount}
+                  .score.likes 321
+                  .arrow.down.login-required(onclick='', role='button', aria-label='downvote', tabindex='0')
+                a.thumbnail.self.may-blank(href='#{tip.urlData.url}')
+                  if tip.urlData.links.thumbnail
+                    //- img(src='#{tip.urlData.links.thumbnail[0].href}')
+                    img(src='#{tip.urlData.links.thumbnail[0].href}', width='70', alt='')
+
+                .entry.unvoted
+                  p.title
+                    a.title.may-blank(href='#{tip.urlData.url}', tabindex='1')
+                      | #{tip.urlData.meta.title}
+                    span.domain
+                      | (
+                      a(href='/r/CoinAwesome/') #{tip.urlData.meta.site}
+                      | )
+
+                  //-.expando-button.collapsed.selftext
+                  p.tagline
+                    | submitted 
+                    time.live-timestamp(title='#{new Date(tip.timeSubm)}', datetime='#{new Date(tip.timeSubm)}') #{tip.timeAgoSubm}
+                    //-time.edited-timestamp(title='last edited 8 hours ago', datetime='2015-07-19T07:07:07+00:00') *
+                    |  by 
+                    if tip.txList
+                      //- div
+                      //- = JSON.stringify(tip.txList[0])
+                      if tip.txList && tip.txList[0] && tip.txList[0].data
+                        a.author.may-blank.id-t2_cyph2(href='http://api.coinawesome.com/address/#{tip.txList[0].data.from}') #{tip.txList[0].data.from}
+                    span.userattrs
+                  if tip.tagsList && tip.tagsList.length > 0
+                    //-span.domain | 
+                    each tag in tip.tagsList
+                      span.domain 
+                        a(href='/t/#{tag}') [#{tag}] 
+                  ul.flat-list.buttons
+                    li.first
+                      a.comments.may-blank(href='') 0 comments (comming soon)
+                    li.share
+                      a.post-sharing-button(href='javascript: void 0;') share
+                  //-.expando(style='display: none')
+                    span.error loading...
+                .child
+                .clearleft
+              .clearleft
+
+          //- .nav-buttons
+          //-   span.nextprev
+          //-     | view more: 
+          //-     a(href='/#{pageType}/?page=#{pageNum+1}', rel='nofollow next') next ›
+    include rfooter

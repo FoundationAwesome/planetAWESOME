@@ -1,0 +1,35 @@
+.thing.id-t1_ctfy4m0.noncollapsed.comment(onclick='click_thing(this)', data-fullname='t1_ctfy4m0')
+  p.parent
+    a(name='ctfy4m0')
+  .midcol.unvoted
+    .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+    .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+  .entry.unvoted
+    p.tagline
+      //a.expand(href='javascript:void(0)', onclick='return togglecomment(this)') [–]
+      a.author.may-blank.id-t2_h8nlg(href='#') TheUsersName
+      span.userattrs
+      span.score.dislikes 45 points 
+      span.score.unvoted 46 points 
+      span.score.likes 47 points 
+      time.live-timestamp(title='Sat Jul 25 19:33:48 2015 UTC', datetime='2015-07-25T19:33:48+00:00') X hours ago 
+      a.numchildren(href='javascript:void(0)', onclick='return togglecomment(this)') (X children)
+    form#form-t1_ctfy4m0p79.usertext(action='#', onsubmit="return post_form(this, 'editusertext')")
+      input(type='hidden', name='thing_id', value='t1_ctfy4m0')
+      .usertext-body.may-blank-within.md-container
+        .md
+          p
+            | Some comment text here...
+          p Even more 
+            a(href='') and this is a link 
+    ul.flat-list.buttons
+      //-li.first
+        a.bylink(href='#', rel='nofollow') permalink
+      li.comment-save-button.save-button
+        a(href='javascript:void(0)') save
+      li.report-button
+        a.action-thing(href='javascript:void(0)', data-action-form='#report-action-form') report
+      li.give-gold-button
+        a.give-gold.login-required(href='/gold?goldtype=gift&months=1&thing=t1_ctfy4m0', title='give reddit gold in appreciation of this post.') give gold
+      li.reply-button
+        a(href='javascript:void(0)', onclick='return reply(this)') reply

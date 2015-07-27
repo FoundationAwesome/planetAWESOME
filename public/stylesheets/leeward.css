@@ -1,0 +1,725 @@
+span.tag {
+  padding: 1px;
+  margin: 1px 0;
+  text-transform: uppercase;
+}
+
+span.keyword {
+  padding: 1px;
+  margin: 1px 0;
+  text-transform: lowercase;
+  color: #BDBDBD;
+}
+
+/*body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td, iframe {
+  margin: 2px 2px;
+}*/
+
+.pagename a img {
+      margin-left: 4px;
+}
+
+.tags {
+      margin-top: 1px;
+
+}
+
+
+
+body {
+    color: #484848;
+    font-family: Helvetica;
+    margin-left: 40px
+}
+
+a {
+    color: #808080
+}
+
+a:hover {
+    color: #990033;
+    text-decoration: none
+}
+
+.md blockquote {
+    border-left: 2px solid #808080;
+    color: #686868
+}
+
+#sr-header-area {
+    opacity: 0;
+    height: 20px;
+    background-color: white;
+    border-bottom: 0
+}
+
+#sr-header-area:hover {
+    opacity: 100
+}
+
+#sr-header-area a {
+    color: #808080;
+    font-family: Helvetica
+}
+
+#sr-header-area a:hover {
+    color: #990033;
+    text-decoration: none
+}
+
+#sr-header-area .selected a {
+    color: #484848
+}
+
+#sr-header-area .selected a:hover {
+    color: #990033
+}
+
+#sr-header-area .drop-choices a.choice {
+    color: #484848!important;
+    font-weight: bold
+}
+
+#sr-header-area .drop-choices a.choice:hover {
+    color: #990033!important
+}
+
+#sr-more-link {
+    position: absolute;
+    background-color: white
+}
+
+#sr-bar {
+    display: none
+}
+
+#sr-header-area .separator {
+    opacity: 0
+}
+
+#header {
+    height: 120px;
+    background-color: white;
+    border-bottom: 0px solid;
+    overflow: visible!important
+}
+
+#header-img {
+    display: none
+}
+
+#header-img.default-header {
+    display: none
+}
+
+.pagename:before {
+    /*content: "awesome";*/
+    position: absolute;
+    font-size: 48px;
+    font-weight: normal;
+    font-family: Ubuntu;
+    font-style: italic;
+    letter-spacing: -2px
+}
+
+.pagename:hover {
+    color: #990033;
+    cursor: pointer
+}
+
+.pagename a {
+    /*opacity: 0;*/
+    color: #484848;
+    text-decoration: none;
+    font-size: 48px;
+    z-index: 99;
+    font-weight: normal;
+    letter-spacing: -2px;
+    text-transform: lowercase;
+}
+
+.pagename a:hover {
+    color: #990033;
+    text-decoration: none
+}
+
+#header .tabmenu {
+    position: absolute;
+    background-color: white;
+    top: 90px;
+    margin: 0px;
+    right: 0px;
+    left: 0px;
+    padding: 0px;
+    height: 30px;
+    border-bottom: 0px solid #808080;
+    color: #484848;
+    list-style-type: none;
+    vertical-align: bottom;
+    text-align: left;
+    padding-left: 0px;
+    white-space: nowrap;
+    font-size: 80%;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-family: Helvetica min-width: 450px
+}
+
+#header .tabmenu li {
+    color: #808080;
+    font-weight: normal
+}
+
+#header .tabmenu .choice {
+    color: #808080;
+    font-weight: normal;
+    border: 0;
+    background-color: white
+}
+
+#header .tabmenu a:hover {
+    color: #990033
+}
+
+#header .tabmenu .selected {
+    color: #484848;
+    font-weight: bold
+}
+
+#header .tabmenu .selected .choice {
+    color: #484848;
+    font-weight: bold;
+    border: 0
+}
+
+#header .tabmenu .selected a:hover {
+    color: #990033
+}
+
+.link {
+    color: #484848;
+    font-weight: bold
+}
+
+.link .title a {
+    color: #484848;
+    font-weight: bold
+}
+
+.link .title a:hover {
+    color: #990033;
+    font-weight: bold
+}
+
+.link .title .domain a {
+    color: #808080;
+    text-decoration: none;
+    font-weight: normal
+}
+
+.link .title .domain a:hover {
+    color: #990033
+}
+
+.link .tagline {
+    color: #808080;
+    text-decoration: none;
+    font-weight: normal
+}
+
+.link .tagline a {
+    color: #484848;
+    text-decoration: none;
+    font-weight: bold
+}
+
+.link .tagline a:hover {
+    color: #990033
+}
+
+.entry .tagline {
+    color: #808080;
+    text-decoration: none;
+    font-weight: normal
+}
+
+.entry .tagline a {
+    color: #484848;
+    text-decoration: none;
+    font-weight: bold
+}
+
+.entry .tagline a:hover {
+    color: #990033;
+    background-color: white
+}
+
+.entry .tagline .expand a {
+    color: #808080;
+    text-decoration: none;
+    font-weight: normal
+}
+
+.usertext a {
+    color: #990033
+}
+
+.usertext .usertext-body {
+    font-weight: normal
+}
+
+.link .usertext .md {
+    border: 1px solid #A0A0A0;
+    border-radius: 0px;
+    background-color: white
+}
+
+.link .entry li a {
+    opacity: 0;
+    color: #808080;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 90%
+}
+
+.link .entry li .comments {
+    opacity: 100!important
+}
+
+.link .entry li a:hover {
+    color: #990033;
+    text-decoration: none
+}
+
+.link:hover .entry li a {
+    opacity: 100
+}
+
+.usertext-body .md li a {
+    opacity: 100;
+    color: #990033;
+    font-weight: normal;
+    text-transform: none;
+    font-size: 100%
+}
+
+#header-bottom-right {
+    background-color: white;
+    margin-right: 40px
+}
+
+#header-bottom-right a {
+    color: #808080;
+    font-weight: normal
+}
+
+#header-bottom-right a:hover {
+    color: #990033;
+    text-decoration: none
+}
+
+#header-bottom-right .user a {
+    font-weight: bold;
+    color: #484848
+}
+
+#header-bottom-right .user a:hover {
+    color: #990033
+}
+
+#header-bottom-right .user .userkarma {
+    cursor: default;
+    font-weight: normal;
+    border: 0
+}
+
+#header-bottom-right ul.flat-list li a {
+    text-transform: uppercase;
+    font-size: 90%
+}
+
+#header-bottom-right form.logout a {
+    text-transform: uppercase;
+    font-size: 90%
+}
+
+#header-bottom-right .separator {
+    visibility: hidden
+}
+
+div.panestack-title {
+    margin-right: 390px
+}
+
+.side {
+    margin-right: 40px;
+    margin-left: 40px
+}
+
+#search input[type=text] {
+    width: 292px;
+    border: 1px solid #A0A0A0;
+    color: #808080;
+    padding-left: 5px;
+    font-family: Helvetica;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 90%
+}
+
+#search input[type=text]:focus {
+    text-transform: none;
+    color: #484848;
+    font-size: 100%
+}
+
+#searchexpando {
+    margin: 5px 0px;
+    padding: 5px;
+    height: 20px;
+    width: 289px;
+    background-color: white;
+    border: 1px solid #A0A0A0;
+    border-radius: 0px;
+    color: #808080;
+    text-transform: uppercase;
+    font-size: 90%
+}
+
+#searchexpando label {
+    cursor: pointer
+}
+
+.search-page form#search label {
+    font-size: 150%;
+    cursor: pointer
+}
+
+#search_showmore {
+    display: none
+}
+
+.account-activity-box,
+.sidebox.create,
+.morelink .nub {
+    display: none
+}
+
+.morelink {
+    background-image: none;
+    background-color: white;
+    text-transform: uppercase;
+    border: 1px solid #A0A0A0
+}
+
+.morelink:hover {
+    background-image: none;
+    background-color: white;
+    border: 1px solid #990033;
+    color: #990033
+}
+
+.morelink a {
+    color: #484848
+}
+
+.morelink a:hover {
+    color: #990033
+}
+
+.submit-link .morelink {
+    display: none
+}
+
+.morelink a:after {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    z-index: 99;
+    background-color: white;
+    color: #484848;
+    font-weight: normal;
+    content: "post something";
+    padding: 0px 12px
+}
+
+.morelink a:hover:after {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    z-index: 99;
+    background-color: #990033;
+    color: white;
+    font-weight: normal;
+    content: "post something";
+    padding: 0px 12px
+}
+
+.sidecontentbox .title h1 {
+    color: #484848
+}
+
+.sidecontentbox .content a:hover {
+    text-decoration: none
+}
+
+.side div.usertext-body {
+    border: 1px solid #A0A0A0;
+    padding: 0px 5px;
+    background-color: #FAFAFA;
+    color: #484848
+}
+
+div.usertext-body a {
+    color: #990033
+}
+
+div.linkinfo {
+    background-color: #FAFAFA;
+    border: 1px solid #A0A0A0;
+    border-radius: 0px
+}
+
+div.shortlink {
+    text-transform: uppercase
+}
+
+.thing.link a.title {
+    color: #484848;
+    font-weight: normal
+}
+
+.thing.link a.title:hover {
+    color: #990033;
+    font-weight: normal
+}
+
+.tagline .stickied-tagline {
+    color: #808080
+}
+
+.thing.stickied a.title {
+    color: #484848;
+    font-weight: bold
+}
+
+.thing.stickied a.title:hover {
+    color: #990033;
+    font-weight: bold
+}
+
+.expando-button {
+    background-color: transparent!important;
+    background-image: url("//b.thumbs.redditmedia.com/xErUR4zPTv03tjGsUVqLiRPNBDq3psB0_9imtsA5HsA.png")!important
+}
+
+.expando-button:hover {
+    cursor: pointer
+}
+
+.titlebox .redditname,
+.titlebox .users-online,
+.titlebox .bottom {
+    display: none
+}
+
+span.subscribe-button.fancy-toggle-button a {
+    background-image: none;
+    border: 1px solid #A0A0A0;
+    border-radius: 0px;
+    color: #484848;
+    text-transform: uppercase
+}
+
+span.subscribe-button.fancy-toggle-button a:hover {
+    background-image: none;
+    background-color: #990033;
+    border: 1px solid #990033;
+    border-radius: 0px;
+    color: white;
+    text-transform: uppercase
+}
+
+.titlebox a {
+    color: #484848
+}
+
+.titlebox a:hover {
+    color: #990033
+}
+
+.tagline a:hover {
+    text-decoration: none
+}
+
+div.content h1 {
+    display: none
+}
+
+#newlink .tabmenu {
+    width: 520px
+}
+
+#newlink ul.tabmenu.formtab {
+    padding-left: 0px;
+    text-align: center
+}
+
+#newlink .tabmenu.formtab a {
+    border: 1px solid #990033;
+    margin: 0px -1px;
+    padding: 5px 40px;
+    background-color: white;
+    color: #484848;
+    text-transform: uppercase;
+    letter-spacing: -1px
+}
+
+#newlink .tabmenu.formtab a:hover {
+    color: #990033;
+    border: 1px solid #990033
+}
+
+#newlink .tabmenu.formtab .selected a {
+    color: white;
+    font-size: 100%;
+    background-color: #990033;
+    border: 1px solid #990033
+}
+
+#newlink .tabmenu.formtab .selected a:hover {
+    color: white;
+    cursor: default
+}
+
+.formtabs-content .infobar:before {
+    display: block;
+    text-indent: 0px;
+    font-size: 16px
+}
+
+#newlink .formtabs-content {
+    border: 0px
+}
+
+.formtabs-content .infobar {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid #A0A0A0;
+    background-color: white;
+    text-align: left;
+    text-indent: -9999px;
+    font-size: 0px;
+    opacity: 0;
+    padding: 0px
+}
+
+.formtabs-content .infobar:before {
+    display: block;
+    text-indent: 0px;
+    color: #808080;
+    font-size: 14px;
+    content: "This is where some text can go.";
+    display: none
+}
+
+#text-desc {
+    display: none;
+    z-index: -1
+}
+
+#link-desc {
+    display: none;
+    z-index: -1
+}
+
+.formtabs-content .title {
+    text-transform: uppercase;
+    color: #484848;
+    font-size: 14px;
+    letter-spacing: -1px
+}
+
+.formtabs-content .roundfield {
+    border: 0px;
+    background-color: white;
+    padding: 0px
+}
+
+#title-field {
+    margin-top: -20px;
+    width: 520px;
+    background-color: white;
+    padding: 0px
+}
+
+#text-field {
+    width: 520px;
+    background-color: white;
+    padding: 0px
+}
+
+#text-field .gray {
+    font-size: 80%
+}
+
+.roundfield .usertext-edit {
+    width: 520px
+}
+
+.roundfield-content textarea {
+    width: 520px
+}
+
+#url-field {
+    width: 520px
+}
+
+input#url {
+    width: 520px
+}
+
+.roundfield label {
+    color: #808080;
+    font-size: 80%
+}
+
+#reddit-field {
+    display: none
+}
+
+#suggested-reddits {
+    display: none
+}
+
+.roundfield.info-notice {
+    display: none
+}
+
+button {
+    border: 1px solid #A0A0A0;
+    background-color: white;
+    color: #484848;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: normal
+}
+
+button:hover {
+    border: 1px solid #990033;
+    background-color: #990033;
+    color: white
+}
+
+div.footer.rounded {
+    display: none
+}
+
+#preview-table>table {
+    width: 850px
+}
+
+textarea#stylesheet_contents {
+    width: 90%
+}

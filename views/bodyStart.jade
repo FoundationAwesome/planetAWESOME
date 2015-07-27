@@ -1,0 +1,393 @@
+#header(role='banner')
+  a#jumpToContent(tabindex='1', href='#content') jump to content
+  #sr-header-area
+    .width-clip
+      //-.dropdown.srdrop(onclick='open_menu(this)')
+        span.selected.title my subreddits
+      //-.drop-choices.srdrop
+        a.choice(href='http://www.reddit.com/r/Art/') Art
+        a.choice(href='http://www.reddit.com/r/AskReddit/') AskReddit
+        a.choice(href='http://www.reddit.com/r/askscience/') askscience
+        a.choice(href='http://www.reddit.com/r/aww/') aww
+        a.choice(href='http://www.reddit.com/r/books/') books
+        a.choice(href='http://www.reddit.com/r/Bundesliga/') Bundesliga
+        a.choice(href='http://www.reddit.com/r/creepy/') creepy
+        a.choice(href='http://www.reddit.com/r/dataisbeautiful/') dataisbeautiful
+        a.choice(href='http://www.reddit.com/r/de_IAmA/') de_IAmA
+        a.choice(href='http://www.reddit.com/r/DIY/') DIY
+        a.choice(href='http://www.reddit.com/r/Documentaries/') Documentaries
+        a.choice(href='http://www.reddit.com/r/EarthPorn/') EarthPorn
+        a.choice(href='http://www.reddit.com/r/europe/') europe
+        a.choice(href='http://www.reddit.com/r/explainlikeimfive/') explainlikeimfive
+        a.choice(href='http://www.reddit.com/r/Fitness/') Fitness
+        a.choice(href='http://www.reddit.com/r/food/') food
+        a.choice(href='http://www.reddit.com/r/funny/') funny
+        a.choice(href='http://www.reddit.com/r/Futurology/') Futurology
+        //-
+          a.choice(href='http://www.reddit.com/r/gadgets/') gadgets
+          a.choice(href='http://www.reddit.com/r/gaming/') gaming
+          a.choice(href='http://www.reddit.com/r/GetMotivated/') GetMotivated
+  
+        a.bottom-option.choice(href='/t/') edit subscriptions
+      .sr-list
+        ul.flat-list.sr-bar.hover
+          if tags
+            each tag, i in tags
+              if i === 0 
+                  a.choice(href='/t/#{tag}') #{tag}
+              if i < 50 && i !== 0
+                li
+                  span.separator -
+                  a.choice(href='/t/#{tag}') #{tag}
+            //-li
+              a.choice(href='http://www.reddit.com/') front
+    
+
+
+      a#sr-more-link(href='/tags/') more »
+  #header-bottom-left
+    a#header-img-a(title='You Asked For Coins, We Gave You Awesome', href='http://coinawesome.com')
+      //- img#header-img(src='http://coinawesome.com/awesome/coinAwesomeBW50.png', width='216', height='94', alt='CoinAwesome')
+    span.hover.pagename
+      a(href='/new') awes
+        img(src='http://coinawesome.com/awesome/coinAwesomeBW50.png' width='25px')
+        | me
+    ul.tabmenu
+      li
+        a.choice(href='/best') best
+      li
+        //-.selected
+        a.choice(href='/new/') new
+      li
+        a.choice(href='#') hot (comming soon)
+      
+      //-li
+        a.choice(href='http://www.reddit.com/r/CoinAwesome/controversial/') controversial
+      //-li
+        a.choice(href='http://www.reddit.com/r/CoinAwesome/top/') top
+      //- li
+      //-   a.choice(href='http://www.reddit.com/r/CoinAwesome/gilded/') gilded
+      //- li
+      //-   a.choice(href='http://www.reddit.com/r/CoinAwesome/wiki/') wiki
+      //- li
+      //-   a.choice(href='http://www.reddit.com/r/CoinAwesome/ads/') promoted
+  #header-bottom-right
+    span.user
+      | want to join? 
+      a.login-required(href='https://chrome.google.com/webstore/detail/coinawesome-wallet-coins/gkabgklaefijlojbcphnpdkmjlibdoed?authuser=0') install the CoinAwesome wallet and start submitting 
+      |  in seconds | 
+      a(href='/login', target='_top') Login 
+    //span.separator |
+    //ul.flat-list.hover
+      li
+        a.pref-lang.choice(href='javascript:void(0)', onclick='return showlang();') English
+.side
+  //-.spacer
+    form#search(action='http://www.reddit.com/r/CoinAwesome/search', role='search')
+      input(type='text', name='q', placeholder='search', tabindex='20')
+      input(type='submit', value='', tabindex='22')
+      #searchexpando.infobar
+        label
+          input(type='checkbox', name='restrict_sr', tabindex='21')
+          | limit my search to /r/CoinAwesome
+        #moresearchinfo
+          p use the following search parameters to narrow your results:
+          dl
+            dt
+              | subreddit:
+              i subreddit
+            dd find submissions in "subreddit"
+            dt
+              | author:
+              i username
+            dd find submissions by "username"
+            dt
+              | site:
+              i example.com
+            dd find submissions from "example.com"
+            dt
+              | url:
+              i text
+            dd search for "text" in url
+            dt
+              | selftext:
+              i text
+            dd search for "text" in self post contents
+            dt self:yes (or self:no)
+            dd include (or exclude) self posts
+            dt nsfw:yes (or nsfw:no)
+            dd include (or exclude) results marked as NSFW
+          p
+            | e.g. 
+            code subreddit:aww site:imgur.com dog
+          p
+            a(href='https://www.reddit.com/wiki/search') see the search faq for details.
+        p
+          a#search_showmore(href='https://www.reddit.com/wiki/search') advanced search: by author, subreddit...
+  //-.spacer
+    form#login_login-main.login-form.login-form-side(method='post', action='https://www.reddit.com/r/CoinAwesome/post/login')
+      input(type='hidden', name='op', value='login-main')
+      //- input(name='user', placeholder='username', type='text', maxlength='20', tabindex='1')
+      input(name='passwd', placeholder='password', type='password', tabindex='1')
+      .status
+      #remember-me
+        input#rem-login-main(type='checkbox', name='rem', tabindex='1')
+        label(for='rem-login-main') remember me
+        a.recover-password(href='/password') reset password
+      .submit
+        span.throbber
+        button.btn(type='submit', tabindex='1') login
+      .clear
+  //- .spacer
+  //-   .sponsorshipbox
+  //- .spacer
+  //-   .sidebox.submit.submit-link
+  //-     .morelink
+  //-       a.login-required(href='http://www.reddit.com/r/CoinAwesome/submit', target='_top') Submit a new link
+  //-       .nub
+  //- .spacer
+  //-   .sidebox.submit.submit-text
+  //-     .morelink
+  //-       a.login-required(href='http://www.reddit.com/r/CoinAwesome/submit?selftext=true', target='_top') Submit a new text post
+  //-       .nub
+  //-.spacer
+    .sidebox
+      //.morelink
+      a(href='/login', target='_top') Login with CryptoID
+      .nub
+  .spacer
+    .titlebox
+      //-h1.hover.redditname
+        a.hover(href='http://www.reddit.com/r/CoinAwesome/') CoinAwesome
+      //- span.fancy-toggle-button.subscribe-button.toggle(style='', data-sr_name='CoinAwesome')
+      //-   a.option.active.add.login-required(href='#', tabindex='100') subscribe
+      //-   a.option.remove(href='#') unsubscribe
+      //- span.subscribers
+      //-   span.number 169
+      //-   span.word readers
+      //- p.users-online(title='logged-in users viewing this subreddit in the past 15 minutes')
+      //-   span.number 743
+      //-   span.word users here now
+      form#form-t5_2s3qjjad.usertext(action='#', onsubmit="return post_form(this, 'editusertext')")
+        input(type='hidden', name='thing_id', value='t5_2s3qj')
+        .usertext-body.may-blank-within.md-container
+          .md
+            p
+              em 
+                strong AWESOME 
+              |  is 
+              em a new decentralied reputation platform 
+              | , where you upvote with coins instead of votes. All submissions incl. URLs and tags are on the blockchain. 
+              | With CoinAwesome the users remain in power. There is no lock-in and there will be no ads, ever!
+            p 
+              | Submit your best articles, videos or music (any URL) and earn CoinAwesome AWE coins from the community!
+            p
+              | If you have never owned a cryptographical identity before, 
+              strong AWESOME 
+              | is the easiest and most fun way to do so!
+              //- em be your own bank
+              | 
+            p
+              | If you are new to CoinAwesome,  
+              a(href='/#') install the wallet, 
+              | check  
+              a(href='https://www.weusecoins.com/en/') our giveaways 
+              |  and 
+              a(href='http://coinawesome.com/') start submitting! 
+              | If your content got tipped, 
+              a() learn how to collect your tip.
+              //- | . You can also explore the 
+              //- a(href='http://bitcoin.it') CoinAwesome Wiki
+              //- | :
+            //- out
+              ul
+                li
+                  a(href='https://bitcoin.org/en/getting-started') Getting Started
+                  br
+                li
+                  a(href='https://en.bitcoin.it/wiki/Faq') FAQ
+                  br
+                li
+                  a(href='https://en.bitcoin.it/wiki/Myths') Common Myths
+                  br
+                li
+                  a(href='https://en.bitcoin.it/wiki/Trade') CoinAwesome Merchants
+              p
+                strong
+                  a(href='http://howtobuybitcoins.info/') How to buy bitcoins
+                br
+                a(href='http://www.reddit.com/gold/about/') Buy Reddit Gold using bitcoins!
+              p
+                a(href='http://www.reddit.com/r/CoinAwesome/comments/18r5qc/will_i_earn_money_by_mining_an_answer_to_all/') Will I earn money by mining?
+                br
+                a(href='http://www.reddit.com/r/CoinAwesome/comments/1pxy4w/basic_bitcoin_security_guide/') Security guide
+              h3 Community guidelines
+              ul
+                li Do not use URL shortening services: always submit the real link.
+                li
+                  | Begging/asking for bitcoins is absolutely not allowed, no matter how badly you need the bitcoins. Only requests for donations to large, recognized charities are allowed, and only if there is good reason to believe that the person accepting bitcoins on behalf of the charity is trustworthy.
+                li
+                  | News articles that do not contain the word "CoinAwesome" are usually off-topic. This subreddit is not about general financial news.
+                li
+                  | Submissions that are mostly about some other cryptocurrency belong elsewhere. For example, 
+                  a(href='/r/CryptoCurrency') /r/CryptoCurrency
+                  |  is a good place to discuss all cryptocurrencies.
+                li No referral links in submissions.
+                li No compilations of free CoinAwesome sites.
+                li
+                  | Trades should usually not be advertised here. For example, submissions like "Buying 100 BTC" or "Selling my computer for bitcoins" do not belong here. 
+                  a(href='/r/CoinAwesome') /r/CoinAwesome
+                  |  is primarily for news and discussion.
+                li
+                  | Please avoid repetition — 
+                  a(href='/r/bitcoin') /r/bitcoin
+                  |  is a subreddit devoted to new information and discussion about CoinAwesome and its ecosystem. New merchants are welcome to announce their services for CoinAwesome, but after those have been announced they are no longer news and should not be re-posted. Aside from 
+                  em new
+                  |  merchant announcements, those interested in advertising to our audience should consider 
+                  a(href='http://www.reddit.com/ad_inq/') Reddit's self-serve advertising system
+                  | .
+                li
+                  | No wallet addresses in posts/comments. The 
+                  a(href='/r/changetip') tipbot
+                  |  can be used.
+              h3 Related communities
+              p (Sorted roughly by decreasing popularity.)
+              ul
+                li
+                  strong
+                    a(href='/r/bitcoinbeginners') CoinAwesome Beginners
+                li
+                  a(href='http://www.reddit.com/r/CoinAwesome/wiki/local_communities') Local CoinAwesome communities
+                li
+                  a(href='/r/CoinAwesomeMarkets') CoinAwesomeMarkets
+                li
+                  a(href='/r/bitcoinmining') CoinAwesomeMining
+                li
+                  a(href='/r/Jobs4bitcoins') Jobs4CoinAwesome
+                li
+                  a(href='/r/GirlsGoneCoinAwesome') Girls Gone CoinAwesome
+                  |  (NSFW)
+                li
+                  a(href='/r/CryptoMarkets') CryptoMarkets
+                li
+                  a(href='/r/bitmarket') BitMarket
+                li
+                  a(href='/r/changetip') ChangeTip
+                li
+                  a(href='/r/CoinAwesomeStocks') CoinAwesomeStocks
+                li
+                  a(href='http://www.reddit.com/r/CoinAwesome/wiki/communities') [More]
+              h4 Non-CoinAwesome communities
+              ul
+                li
+                  a(href='/r/technology') Technology
+                li
+                  a(href='/r/economics') Economics
+                li
+                  a(href='/r/crypto') Crypto
+                li
+                  a(href='/r/Anarcho_Capitalism') Anarcho-Capitalism
+                li
+                  a(href='/r/CryptoCurrency') CryptoCurrency
+                li
+                  a(href='/r/cryptoanarchy') CryptoAnarchy
+                li
+                  a(href='http://www.reddit.com/r/CoinAwesome/wiki/communities') [More]
+              h3 Join us on IRC
+              p
+                | chat.freenode.net 
+                em #bitcoin
+              h3 Other CoinAwesome sites
+              p
+                strong
+                  a(href='https://bitcointalk.org') CoinAwesome Forum
+                br
+                a(href='http://bitcoin.stackexchange.com/') CoinAwesome Stack Exchange
+              h3 Download CoinAwesome Core
+              p
+                | CoinAwesome Core is the the 
+                a(href='https://en.bitcoin.it/wiki/Full_node') backbone of the CoinAwesome network
+                | . Almost all CoinAwesome wallets rely on CoinAwesome Core in one way or another. If you have a fairly powerful computer that is almost always online, you can help the network by running CoinAwesome Core. You can also use CoinAwesome Core as a very secure CoinAwesome wallet.
+              ul
+                li
+                  | Latest stable version: 
+                  a(href='https://bitcoin.org/en/download')
+                    strong
+                      em 0.11.0 (July 2015)
+                  |  [
+                  a(href='http://www.reddit.com/r/CoinAwesome/wiki/bitcoin_core_bittorrent') BitTorrent
+                  | ]
+                li
+                  | You 
+                  em MUST
+                  a(href='/r/CoinAwesome/wiki/verifying_bitcoin_core') verify the integrity of this software
+                  |  before running it.
+              h3 Style sheet credits
+              p
+                | The CSS used by this subreddit is the Erdune Theme modified by 
+                a(href='/u/Annihilia') /u/Annihilia
+                |  and 
+                a(href='/u/konkedas') /u/konkedas
+                |  .
+              p
+                | Logo design by 
+                a(href='/u/Annihilia') /u/Annihilia
+                | . 
+                a(href='http://www.lunarcannon.com/') Check out his other work here
+                | .
+              p
+                em Ad campaign:
+              p
+                | We previously collected donations to fund CoinAwesome advertising efforts, but we no longer accept donations. The 
+                a(href='http://blockexplorer.com/q/getreceivedbyaddress/16KaCJB7fVuT6hvA7wzgzVjAnHz28bNvvh') funds already donated
+                |  will be spent on some sort of advertising, as intended. (10.35799117 BTC spent so far.)
+      .bottom
+        | created by 
+        span.author [deleted]
+        span.age
+          | a community for 
+          time(title='Thu Sep 9 14:30:26 2010 UTC', datetime='2010-09-09T07:30:26-07:00') 4 years
+      .clear
+  //-.spacer
+    iframe#ad_main(frameborder='0', scrolling='no', name='ad_main', src='http://static.adzerk.net/reddit/ads.html?sr=bitcoin,loggedout&bust2#http://www.reddit.com')
+    //-script(type='text/javascript').
+      $(function() { var ad = $("#ad_main"); if(!ad.length || ad.height() == 0 || ad.width() == 0 || ad.offset().left == 0) { $(".footer").append("<img alt='' src='//pixel.redditmedia.com/pixel/of_defenestration.png?v=1RU8uqSyrD1tuImfCHa4aEJlk3AQfIJpeufnuWcGo3M5gAK2bEarAKyz%2BIeAWVIkKcU1GP0YMFw%3D&hash=adblock0e31bc319d5b5882b0cddf147f4ce1da5ac9c731&id=adblock&random=" + Math.random()*10000000000000000 + "'/>"); } });
+  //-.spacer
+    .sidecontentbox
+      a.helplink(href='/message/compose?to=%2Fr%2FCoinAwesome') message the moderators
+      .title
+        h1 MODERATORS
+      ul.content
+        li
+          a.author.may-blank.id-t2_4a66i(href='http://www.reddit.com/user/theymos') theymos
+          span.userattrs
+        li
+          a.author.may-blank.id-t2_9a4qu(href='http://www.reddit.com/user/ThePiachu') ThePiachu
+          span.userattrs
+        li
+          a.author.may-blank.id-t2_b3jkm(href='http://www.reddit.com/user/rbitcoin-bot') rbitcoin-bot
+          span.userattrs
+        //- 
+          li
+            a.author.may-blank.id-t2_b9us3(href='http://www.reddit.com/user/MiningBuddy') MiningBuddy
+            span.userattrs
+          li
+            a.author.may-blank.id-t2_35mrg(href='http://www.reddit.com/user/colsatre') colsatre
+            span.userattrs
+          li
+            a.author.may-blank.id-t2_g4qhk(href='http://www.reddit.com/user/StarMaged') StarMaged
+            span.userattrs
+          li
+            a.author.may-blank.id-t2_8cn5m(href='http://www.reddit.com/user/hardleft121') hardleft121
+            span.userattrs
+          li
+            a.author.may-blank.id-t2_d28pq(href='http://www.reddit.com/user/Aussiehash') Aussiehash
+            span.userattrs
+          li
+            a.author.may-blank.id-t2_5ija3(href='http://www.reddit.com/user/DotGaming') DotGaming
+            span.userattrs
+          li
+            a.author.may-blank.id-t2_d7sse(href='http://www.reddit.com/user/BashCo') BashCo
+            span.userattrs
+          li.more
+            a(href='/r/CoinAwesome/about/moderators') ...and 3 more »

@@ -1,0 +1,63 @@
+.thing.even.link.self(onclick='')
+  p.parent
+  span.rank #{tip.totalAWE} 
+  .midcol.unvoted
+    .arrow.up.login-required(onclick='', role='button', aria-label='upvote', tabindex='0')
+    //.score.dislikes 123
+    .score.unvoted #{tip.txCount}
+    //.score.likes 321
+    .arrow.down.login-required(onclick='', role='button', aria-label='downvote', tabindex='0')
+  if !tip.urlData.links.thumbnail
+    a.thumbnail.default.may-blank(href='#{tip.urlData.url}')
+  else
+    a.thumbnail.self.may-blank(href='#{tip.urlData.url}')
+      //- img(src='#{tip.urlData.links.thumbnail[0].href}')
+      img(src='#{tip.urlData.links.thumbnail[0].href}', alt='')
+
+  .entry.unvoted
+    p.title
+      a.title.may-blank(href='#{tip.urlData.url}', title='#{tip.urlData.meta.description}', tabindex='1')
+        | #{tip.urlData.meta.title}
+      span.domain
+        | (
+        a(href='/r/CoinAwesome/') #{tip.urlData.meta.site}
+        | )
+
+    //-.expando-button.collapsed.selftext
+    p.tagline
+      | submitted 
+      time.live-timestamp(title='#{new Date(tip.timeSubm)}', datetime='#{new Date(tip.timeSubm)}') #{tip.timeAgoSubm} 
+      //-time.edited-timestamp(title='last edited 8 hours ago', datetime='2015-07-19T07:07:07+00:00') *
+      |  by 
+      if tip.txList
+        //- div
+        //- = JSON.stringify(tip.txList[0])
+        if tip.txList && tip.txList[0] && tip.txList[0].data
+          a.author.may-blank.id-t2_cyph2(href='http://api.coinawesome.com/address/#{tip.txList[0].data.from}') #{tip.txList[0].data.from}
+      span.userattrs
+    p.tags
+      if tip.tagsList && tip.tagsList.length > 0
+        //-span.domain | 
+        each tag in tip.tagsList
+          span.tag 
+            a(href='/t/#{tag}') [#{tag}] 
+    p.keywords
+      if tip.urlData.meta.keywords 
+        //-span.domain | 
+        each keyword, i in tip.urlData.meta.keywords.split(',')
+          if i < 10
+            span.keyword
+              | #{keyword}  
+    ul.flat-list.buttons
+      li.first
+        a.comments.may-blank(href='/url/#{encodeURIComponent(tip.urlData.url)}') 0 comments 
+      li.share
+        a.post-sharing-button(href='javascript: void 0;') share
+    //p
+    //| #{tip.urlData.meta.description}
+    //-.expando(style='display: none')
+      span.error loading...
+  .child
+  .clearleft
+
+.clearleft

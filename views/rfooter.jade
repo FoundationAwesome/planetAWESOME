@@ -1,0 +1,97 @@
+.footer-parent
+  //-.footer.rounded(by-zero='')
+    .col
+      ul.flat-vert.hover
+        li.flat-vert.title about
+        li
+          a.choice(href='http://www.reddit.com/blog/') blog
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/about/') about
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/about/values/') values
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/about/team/') team
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/code/') source code
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/advertising/') advertise
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/jobs/') jobs
+    .col
+      ul.flat-vert.hover
+        li.flat-vert.title help
+        li
+          a.choice(href='http://www.reddit.com/rules/') site rules
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/wiki/faq/') FAQ
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/wiki/') wiki
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/wiki/reddiquette/') reddiquette
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/wiki/transparency/') transparency
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/contact/') contact us
+    //-.col
+      ul.flat-vert.hover
+        li.flat-vert.title apps & tools
+        li
+          a.choice(href='http://alienblue.org') Alien Blue iOS app
+        li
+          span.separator
+          a.choice(href='http://redditama.reddit.com/') reddit AMA app
+        li
+          span.separator
+          a.choice(href='https://m.reddit.com') mobile beta
+        li
+          span.separator
+          a.choice(href='http://www.reddit.com/buttons/') buttons
+    //-.col
+      ul.flat-vert.hover
+        li.flat-vert.title <3
+        li
+          a.buygold.choice(href='http://www.reddit.com/gold/about/') reddit gold
+        li
+          span.separator
+          a.choice(href='http://redditmarket.com') reddit store
+        li
+          span.separator
+          a.choice(href='http://redditgifts.com') redditgifts
+        li
+          span.separator
+          a.choice(href='http://reddit.tv') reddit.tv
+        li
+          span.separator
+          a.choice(href='http://radioreddit.com') radio reddit
+  p.bottommenu
+    //- | Use of this site constitutes acceptance of our 
+    //- a(href='http://www.reddit.com/help/useragreement') User Agreement
+    //- |  and 
+    //- a(href='http://www.reddit.com/help/privacypolicy') Privacy Policy {Genitive}
+    | 2015 CoinAwesome. Copy me if you can!
+  p.bottommenu CoinAwesome
+//- script.
+  var BETA_HOST = 'beta.reddit.com'; if (location.host === BETA_HOST) { r.config.https_endpoint = 'https://' + BETA_HOST; }
+//- script#login-popup(type='text/template').
+  <h3 id="cover-msg" class="modal-title">You need to login to do that.</h3><div id="login"><div class="split-panel"><div class="split-panel-section split-panel-divider"><h4 class="modal-title">create a new account</h4><form id="register-form" method="post" action="https://www.reddit.com/r/CoinAwesome/post/reg" class="form-v2"><input type="hidden" name="op" value="reg"><div class="c-form-group "><label for="user_reg" class="screenreader-only">username:</label><input value="" name="user" id="user_reg" class="c-form-control" type="text" maxlength="20" tabindex="2" placeholder="choose a username" data-validate-url="/api/check_username.json" data-validate-min="3" autocomplete="off" ><div class="c-form-control-feedback-wrapper "><span class="c-form-control-feedback c-form-control-feedback-throbber"></span><span class="c-form-control-feedback c-form-control-feedback-error" title=""></span><span class="c-form-control-feedback c-form-control-feedback-success"></span></div></div><div class="c-form-group "><label for="passwd_reg" class="screenreader-only">password:</label><input id="passwd_reg" class="c-form-control" name="passwd" type="password" tabindex="2" placeholder="password" data-validate-url='/api/check_password.json'><div class="c-form-control-feedback-wrapper "><span class="c-form-control-feedback c-form-control-feedback-throbber"></span><span class="c-form-control-feedback c-form-control-feedback-error" title=""></span><span class="c-form-control-feedback c-form-control-feedback-success"></span></div></div><div class="c-form-group "><label for="passwd2_reg" class="screenreader-only">verify password:</label><input name="passwd2" id="passwd2_reg" class="c-form-control" type="password" tabindex="2" placeholder="verify password"><div class="c-form-control-feedback-wrapper "><span class="c-form-control-feedback c-form-control-feedback-throbber"></span><span class="c-form-control-feedback c-form-control-feedback-error" title=""></span><span class="c-form-control-feedback c-form-control-feedback-success"></span></div></div><div class="c-form-group "><label for="email_reg" class="screenreader-only">email: &nbsp;<i>(optional)</i></label><input value="" name="email" id="email_reg" class="c-form-control" type="text" tabindex="2" placeholder="email (optional)" data-validate-url="/api/check_email.json" data-validate-on="change blur"><div class="c-form-control-feedback-wrapper "><span class="c-form-control-feedback c-form-control-feedback-throbber"></span><span class="c-form-control-feedback c-form-control-feedback-error" title=""></span><span class="c-form-control-feedback c-form-control-feedback-success"></span></div></div><div class="c-checkbox"><input type="checkbox" name="rem" id="rem_reg" tabindex="2"><label for="rem_reg">remember me</label></div><div class="c-checkbox"><input type="checkbox" name="newsletter_subscribe" id="newsletter_subscribe" tabindex="2" data-validate-url="/api/check_email.json" data-validate-on="change blur" data-validate-with="email" ><label for="newsletter_subscribe">get the best of reddit emailed to you once a week.&#32;<a href="/newsletter" target="_blank">learn more</a></label></div><div class="c-clearfix c-submit-group"><span class="c-form-throbber"></span><button type="submit" class="c-btn c-btn-primary c-pull-right" tabindex="2">create account</button></div><div><div class="c-alert c-alert-danger"></div><span class="error RATELIMIT field-ratelimit" style="display:none"></span><span class="error RATELIMIT field-vdelay" style="display:none"></span></div></form></div><div class="split-panel-section"><h4 class="modal-title">sign in</h4><form id="login-form" method="post" action="https://www.reddit.com/r/CoinAwesome/post/login" class="form-v2"><input type="hidden" name="op" value="login"><div class="c-form-group "><label for="user_login" class="screenreader-only">username:</label><input value="" name="user" id="user_login" class="c-form-control" type="text" maxlength="20" tabindex="3" placeholder="username" ></div><div class="c-form-group "><label for="passwd_login" class="screenreader-only">password:</label><input id="passwd_login" class="c-form-control" name="passwd" type="password" tabindex="3" placeholder="password" ><div class="c-form-control-feedback-wrapper "><span class="c-form-control-feedback c-form-control-feedback-throbber"></span><span class="c-form-control-feedback c-form-control-feedback-error" title=""></span><span class="c-form-control-feedback c-form-control-feedback-success"></span></div></div><div class="c-checkbox"><input type="checkbox" name="rem" id="rem_login" tabindex="3"><label for="rem_login">remember me</label><a href="/password" class="c-pull-right">reset password</a></div><div class="c-clearfix c-submit-group"><span class="c-form-throbber"></span><button type="submit" class="c-btn c-btn-primary c-pull-right" tabindex="3">sign in</button></div><div><div class="c-alert c-alert-danger"></div></div></form></div></div><p class="login-disclaimer">We care about your privacy, and we never spam. By creating an account, you agree to reddit's&#32;<a href="http://www.reddit.com/help/useragreement" >User Agreement</a>&#32;and&#32;<a href="http://www.reddit.com/help/privacypolicy" >Privacy Policy</a>. We're proud of them, and you should read them.</p></div>
+//- script#lang-popup(type='text/template').
+  <form action="http://www.reddit.com/post/unlogged_options" method="post" class="pretty-form short-text"><input type="hidden" name="uh" value="" /><table class="content preftable"><tr><th>interface language</th><td class="prefright"><select id="lang" name="lang"><option selected='selected' value="en">English [en]</option><option value="ar">العربية [ar]</option><option value="be">Беларуская мова [be]</option><option value="bg">български език [bg]</option><option value="bs">Bosanski [bs]</option><option value="ca">català [ca]</option><option value="cs">česky [cs]</option><option value="da">dansk [da]</option><option value="de">Deutsch [de]</option><option value="el">Ελληνικά [el]</option><option value="en-au">English (Australia) [en-au]</option><option value="en-ca">English (Canadian) [en-ca]</option><option value="en-gb">English (Great Britain) [en-gb]</option><option value="en-us">English [en-us]</option><option value="eo">Esperanto [eo]</option><option value="es">español [es]</option><option value="es-ar">español [es-ar]</option><option value="et">eesti keel [et]</option><option value="eu">Euskara [eu]</option><option value="fa">فارسی [fa]</option><option value="fi">suomi [fi]</option><option value="fr">français [fr]</option><option value="gd">Gàidhlig [gd]</option><option value="he">עברית [he]</option><option value="hi">मानक हिन्दी [hi]</option><option value="hr">hrvatski [hr]</option><option value="hu">Magyar [hu]</option><option value="hy">Հայերեն լեզու [hy]</option><option value="id">Bahasa Indonesia [id]</option><option value="is">íslenska [is]</option><option value="it">italiano (Italy) [it]</option><option value="ja">日本語 [ja]</option><option value="kn_IN">ಕನ್ನಡ [kn_IN]</option><option value="ko">한국어 [ko]</option><option value="la">Latin [la]</option><option value="leet">1337 [leet]</option><option value="lol">LOL [lol]</option><option value="lt">lietuvių kalba [lt]</option><option value="lv">latviešu valoda [lv]</option><option value="nl">Nederlands [nl]</option><option value="nn">Nynorsk [nn]</option><option value="no">Norsk [no]</option><option value="pir">Arrrrrrrr! [pir]</option><option value="pl">polski [pl]</option><option value="pt">português [pt] (*)</option><option value="pt-pt">português [pt-pt]</option><option value="pt_BR">português brasileiro [pt_BR]</option><option value="ro">română [ro]</option><option value="ru">русский [ru]</option><option value="sk">slovenčina [sk]</option><option value="sl">slovenščina [sl]</option><option value="sr">српски језик [sr]</option><option value="sr-la">Srpski [sr-la]</option><option value="sv">Svenska [sv]</option><option value="ta">தமிழ் [ta]</option><option value="th">ภาษาไทย [th]</option><option value="tr">Türkçe [tr]</option><option value="uk">українська мова [uk]</option><option value="vi">Tiếng Việt [vi]</option><option value="zh">中文 [zh]</option></select>&#32;<span class="details hover">(*) incomplete &#32;<a href="http://www.reddit.com/r/i18n/wiki/getting_started">volunteer to translate</a></span></td></tr><tr><td><input type="submit" class="btn" value="save options"/></td></tr></table></form>
+//- script(type='text/javascript', src='//www.redditstatic.com/https-tester.wq8sGsb5uBg.js')
+//- script(type='text/javascript').
+  if(Math.random()< 0.01) { runHTTPSCertTest({"logPixel": "http://pixel.redditmedia.com/pixel/of_diligence.png", "testImg": "https://tls-test-1.reddit.com/static/pixel.png", "runName": "gandi_sha2", "controlImg": "http://static.reddit.com/static/pixel.png"}); }
+p.debuginfo
+  span.icon π
+  span.content
+    | Rendered ...
+//- script(type='text/javascript', src='//www.redditstatic.com/reddit.en.1tviWwlVimo.js')

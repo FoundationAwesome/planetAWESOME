@@ -1,0 +1,333 @@
+extends layout
+
+block content
+
+  #boxes.masonry(style='position: relative; height: 4100px; width: 1140px;')
+
+    include sidebar
+
+    article.box.post.medium.masonry-brick#preview(data-tags='reblog', style='position: absolute;  visibility: visible; opacity: 1;')
+      .post-content
+        //.clearfix
+        .row
+          .large-8.columns.large-centered
+              h3#title Share what&apos;s new...
+              |         
+              form#preview_form.form-vertical(method='post', action='.')
+                // <textarea class="input-xxlarge" name="status" id="id_status" placeholder="Enter a URL."></textarea>
+                input#id_status.xlarge(type='text', name='status', placeholder='Enter a URL')
+                // Placeholder that tells Preview where to put the selector
+                .selector-wrapper
+                |           
+                .actions
+                  a#id_submit.button Next
+              |         
+              #feed
+
+    each game in games
+      //-.game
+        h1= game.title + ' '
+          img(src='#{game.favicon_url}')
+        a(href='#{game.original_url}') #{game.original_url}
+        h2= game.btcAddress
+        h3= game.provider_name
+      article.box.post.type-photo.small.masonry-brick(data-tags='reblog', style='position: absolute; top: 2122px; left: 855px; visibility: visible; opacity: 1;')
+          .post-content.clearfix
+              if game.thumbnail_url
+                .photo-wrap
+                  a(href='#{game.url}')
+                    img.photo(alt='#{game.description}', data-width='1280', src='#{game.thumbnail_url}')
+                    //- img.photo(alt='#{game.description}', data-width='1280', src='#{game.images[0][url]}')
+                  //-.icons
+                    a.tumblr-box(hreff='http://halcyon-theme.tumblr.com/whatever')
+                      span.zoom Zoom
+                    span.info
+                      | Info
+                      .pxu-data
+                        table.exif
+                          tbody
+                            tr
+                              td(colspan='2')
+                                span.label Camera
+                                br
+                                | Canon EOS 5D Mark II
+                            tr
+                              td
+                                span.label ISO
+                                br
+                                | 250
+                              td
+                                span.label Aperture
+                                br
+                                | f/2
+                            tr
+                              td
+                                span.label Exposure
+                                br
+                                | 1/800th
+                              td
+                                span.label Focal Length
+                                br
+                                | 135mm
+                        span.arrow-down
+              .caption.clearfix.rte
+                h2
+                  //img(src='#{game.favicon_url}', width='20px')
+                  span #{game.title}
+                .post-type-icon-wrap
+                  .border
+                    img(src='#{game.favicon_url}', width='20px')
+                h3
+                  | Read more at 
+                  a(href='#{game.url}')=game.provider_name
+                p
+                  | #{game.description}
+                p
+                  h6 UP Address: 
+                  a(href='http://blockchain.info/address/#{game.btcAddress}')=game.btcAddress
+                  h6 DOWN Address: 
+                  a(href='http://blockchain.info/address/#{game.btcAddress}')="12iausdfiuashfdiuashdfiu"
+
+                h5 Total in: #{Math.random()*24}  BTC
+                //-h6 Countdown: 22:00 hours left
+                //-.post-type-icon-wrap
+                  img(src='#{game.favicon_url}', width='30px')
+                  //.border
+                    //a.post-type-icon
+                    //a.post-type-icon(href='http://halcyon-theme.tumblr.com/post/33916554456/dan-mangan-daniel-mangan-born-april-28-1983-is')
+                      span.icon         s        
+
+
+            .post-meta
+              .cell.clearfix.timestamp
+                a 
+                  span Time left: 23 hours
+              .spacer
+                .spacer
+              .cell.clearfix
+                span Play Now!
+                  //#{Math.random()*24} Bitcoin
+              .cell.clearfix
+                span  
+              .cell.clearfix
+                span  
+
+
+
+
+            //-.post-meta
+              .cell.clearfix.timestamp
+                a(href='')
+                  span.icon B
+                  span.text 2 years ago
+              .spacer
+                .spacer
+              .cell.clearfix.comments.facebook(style='text-indent: 1px;')
+                a(href='')
+                  span.icon Y
+                  span.text
+                a.comment-count(href='')
+                  span.text 100 
+                  |  transactions
+              .spacer.comments
+                .spacer
+              .cell.clearfix.notes
+                a(href='')
+                  span.icon p 
+                  span.text 35
+              .spacer
+                .spacer
+              .cell.clearfix.pxu-share
+                span.share-button
+                  span.icon r
+                  span.text share
+              .share-container
+                .share-cell.close
+                  span.icon A
+                //-.share-cell.short-link
+                  .small.icon
+                    a(href='http://tmblr.co/ZRDiztVbbOpO') 0
+                  .big
+                    span SHORTLINK
+                    |                         
+                    input.url(value='http://tmblr.co/ZRDiztVbbOpO')
+                //a.share-cell.twitter.icon(target='_blank', href='https://twitter.com/intent/tweet?url=http://tmblr.co/ZRDiztVbbOpO') t
+                //a.share-cell.facebook.icon(target='_blank', href='https://www.facebook.com/sharer.php?u=http://tmblr.co/ZRDiztVbbOpO') u
+                //a.share-cell.pinterest.icon(target='_blank', href='http://pinterest.com/pin/create/button/?url=http://tmblr.co/ZRDiztVbbOpO&media=http://40.media.tumblr.com/tumblr_mb8b9oelMS1qfjsvao1_500.jpg') l
+
+
+
+      //-article.box.post.type-audio.small.masonry-brick(data-tags='medium reblog', style='positionn: absolute; topp: 0px; leftt: 285px; visibility: visible; opacity: 1;')
+          .post-content.clearfix
+              .album-art-area
+                img.album-art(src='./fill-img.jpg')
+                .custom-player-wrap(style='display: block;')
+                  .button-wrap
+                    .button
+                      //
+                        <audio preload="none">
+                        <source src="https://www.tumblr.com/audio_file/halcyon-theme/45792206102/tumblr_mjtaxxxr0c1rg664a?plead=please-dont-download-this-or-our-lawyers-wont-let-us-host-audio" type="audio/mpeg">
+                        </audio>
+                  .bar
+                    .buffered
+                    .progress
+                .overlay(style='display: none;')
+              .song-meta.clearfix
+                span.artist= game.title + ' '
+                |  - 
+                span.track XXX
+                .album
+                  | from 
+                  span.album= game.btcAddress
+                .plays 29,722 plays
+              .caption.clearfix.rte
+                p
+                  a(href='http://en.wikipedia.org/wiki/Grizzly_Bear_(band)') Grizzly Bear
+                p= game.description
+                p.tumblr-source
+                  | Source: 
+                  a(href='http://glowingmind.tumblr.com/post/45590909195') glowingmind
+            .post-type-icon-wrap
+              .border
+                a.post-type-icon(href='http://halcyon-theme.tumblr.com/post/45792206102/grizzly-bear-grizzly-bear-is-an-american-indie')
+                  span.icon                       2      
+            .post-meta
+              .cell.clearfix.timestamp
+                a(href='http://halcyon-theme.tumblr.com/post/45792206102/grizzly-bear-grizzly-bear-is-an-american-indie')
+                  span.icon B
+                  span.text 2 years ago
+              .spacer
+                .spacer
+              .cell.clearfix.comments.facebook(style='text-indent: 1px;')
+                a(href='http://halcyon-theme.tumblr.com/post/45792206102/grizzly-bear-grizzly-bear-is-an-american-indie#comments')
+                  span.icon Y
+                  span.text
+                a.comment-count(href='http://halcyon-theme.tumblr.com/post/45792206102/grizzly-bear-grizzly-bear-is-an-american-indie')
+                  fb:comments-count(href='http://halcyon-theme.tumblr.com/post/45792206102/grizzly-bear-grizzly-bear-is-an-american-indie')
+                  |  Comments
+              .spacer.comments
+                .spacer
+              .cell.clearfix.notes
+                a(href='http://halcyon-theme.tumblr.com/post/45792206102/grizzly-bear-grizzly-bear-is-an-american-indie#notes')
+                  span.icon p
+                  span.text 105 Notes
+              .spacer
+                .spacer
+              .cell.clearfix.pxu-share
+                span.share-button
+                  span.icon r
+                  span.text share
+              .share-container
+                .share-cell.close
+                  span.icon A
+                .share-cell.short-link
+                  .small.icon
+                    a(href='http://tmblr.co/ZRDiztgfRPqM') 0
+                  .big
+                    span SHORTLINK
+                    |                             
+                    input.url(value='http://tmblr.co/ZRDiztgfRPqM')
+                a.share-cell.twitter.icon(target='_blank', href='https://twitter.com/intent/tweet?url=http://tmblr.co/ZRDiztgfRPqM') t
+                a.share-cell.facebook.icon(target='_blank', href='https://www.facebook.com/sharer.php?u=http://tmblr.co/ZRDiztgfRPqM') u
+                a.share-cell.pinterest.icon(target='_blank', href='http://pinterest.com/pin/create/button/?url=http://tmblr.co/ZRDiztgfRPqM&media=http://38.media.tumblr.com/tumblr_mjtaxxxr0c1rg664ao1_1363535782_cover.jpg') l
+
+    
+    //- h2
+    //-   strong.day= 'DAY ' + dayN 
+      
+    //- h3 Total bitcoins sent to 1Awesomeo1HRfWmZdVbqmCcjkBdXx1jqMf: 
+    //-   if days[dayN].length > 0
+    //-     span #{days[dayN][0].sumOfDay} BTC 
+    //-   else 
+    //-     span 0 BTC
+    //-     div Be the first to buy today - don't risk to be late for this round!
+    //-   //-span Transactions: 
+    //- if days[dayN].length > 0
+    //-   ul
+    //-     each tx in days[dayN]
+    //-       li
+    //-         strong.tx #{tx.btcAddr} 
+    //-         div
+    //-           div corresponding AWE address 
+    //-             strong #{tx.aweAddr} 
+    //-           div Bitcoin transaction ID: #{tx.hash} 
+    //-           div bought 
+    //-             strong #{tx.aweReceive} AWE 
+    //-             span with #{tx.btcSent} BTC
+    //-   div 
+    //-     strong Price per 1 million AWE coins: #{parseInt((days[dayN][0].btcSent / days[dayN][0].aweReceive * 1000000)*100000000)/100000000} BTC
+
+  //-script.
+    var getAddrForUrl = function(string) {
+      var bitcore = require('bitcore')
+      var network = 'mainnet' // or 'testnet'
+      var Buffer = bitcore.deps.Buffer
+      var mpk = new bitcore.PublicKey('02674b07011a99c61f67543f3d2c6aba64770a8fb4856d89dfe563d0df453e1618')
+      // url to address
+      var calcAddr = function(urlString, masterPublicKey) {
+        var urlHash = bitcore.crypto.Hash.sha256(new Buffer(urlString))
+        var urlBN = bitcore.crypto.BN.fromBuffer(urlHash)
+        var urlPoint = bitcore.crypto.Point.getG().mul(urlBN).add(masterPublicKey.point)
+        var urlAddress = bitcore.PublicKey.fromPoint(urlPoint).toAddress(network)
+        return urlAddress
+      }
+      return calcAddr(string, mpk).toString()
+    }
+    $('#id_status').preview({key: '66ec62e960ec42c79a314dcae85f2d10'}) // Sign up for a key: http://embed.ly/pricing
+    .on('loading', function(){
+    $(this).prop('disabled', true);
+    $('form .button').html('<i class="icon-spinner icon-spin"></i>');
+    }).on('loaded', function(){
+    $(this).prop('disabled', false);
+    $('form .button').text('Next');
+    });
+    $('form .button').on('click', function(){
+    $('#preview_form').trigger('submit')
+    $('#preview_form').hide()
+    });
+    $('#preview_form').on('submit', function(){
+    // Preview data.
+    var preview = $('#id_status').data('preview');
+    preview.status = $('#id_status').val();
+    preview.btcAddress = getAddrForUrl(preview.original_url)
+    console.dir(preview)
+    // Close the selector
+    $('#id_status').trigger('close');
+    // Clear the url form.
+    $('#id_status').val('');
+    $('#title').text('Preview and activate now the game...');
+    // Create a post using mustache, i.e. the nice way.
+    var template = [
+    // '<div class="row">',
+    //   '<div class="large-12 columns">',
+    //     '<p>{{status}}</p>',
+    //   '</div>',
+    // '</div>',
+    '<div class="row">',
+    '<div class="large-5 columns">',
+    '<img class="thumb" src="{{thumbnail_url}}"></img>',
+    '</div>',
+    '<div class="large-7 columns">',
+    '<img class="favicon" src="{{favicon_url}}"></img>',
+    '<a href="{{original_url}}">{{title}}</a>',
+    '<p>{{description}}</p>',
+    '<p>Now send at least 0.0001 coins to: </p>',
+    '<h5><a href="bitcoin:123654356543456543">{{btcAddress}}</a></h5>',
+    '<p>Add countdown... 15 min </p>',
+    '</div>',
+    '</div>'].join('');
+    html = Mustache.to_html(template, preview);
+    $('#feed').append(html);
+    $.post( '/post' , preview, function(e,r) {
+    alert('posted!!', e,r)
+    } , 'json' ).done(function() {
+    // alert( "second success" )
+    })
+    .fail(function() {
+    alert( "error" )
+    })
+    .always(function() {
+    // alert( "finished" )
+    })
+    return false;
+    });

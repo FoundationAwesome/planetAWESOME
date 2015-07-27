@@ -1,0 +1,944 @@
+doctype html
+html(xmlns='http://www.w3.org/1999/xhtml', lang='en', xml:lang='en')
+  include rhead
+
+  body.listing-page.hot-page
+    include bodyStart
+
+    a(name='content')
+    .content(role='main')
+      //-section.infobar.newsletterbar.newsletter-container(hidden='')
+        header
+          h1.subscribe-callout
+            a(href='/newsletter')
+              img(src='//www.redditstatic.com/subscribe-header.svg', alt='subscribe to our newsletter')
+          .subscribe-thanks
+            img(src='//www.redditstatic.com/subscribe-header-thanks.svg', alt="_('thanks for subscribing')")
+          h2.result-message get the best of reddit, delivered once a week
+        form.newsletter-signup.form-v2.c-form-inline(method='post', action='https://www.CoinAwesome.com/api/newsletter.json')
+          input(type='hidden', name='uh', value='')
+          input(type='hidden', name='source', value='newsletterbar')
+          .c-form-group
+            label.screenreader-only(for='email') email:
+            input.c-form-control(value='', name='email', type='email', placeholder='enter your email', data-validate-url='/api/check_email.json', data-validate-on='change blur')
+            .c-form-control-feedback-wrapper.inside-input
+              span.c-form-control-feedback.c-form-control-feedback-throbber
+              span.c-form-control-feedback.c-form-control-feedback-error(title='')
+              span.c-form-control-feedback.c-form-control-feedback-success
+          button.c-btn.c-btn-highlight(type='submit') subscribe
+        a.newsletter-close(href='#', title='close') ×
+      //-.spacer
+        #siteTable_organic.organic-listing.loading
+          .help.help-hoverable
+            | what's this?
+            #spotlight-help.hover-bubble.help-bubble.anchor-top
+              .help-section.help-promoted
+                p
+                  | This sponsored link is an advertisement generated with our 
+                  a(href='http://www.CoinAwesome.com/wiki/selfserve') self-serve advertisement tool
+                  | .
+                p
+                  | Use of this tool is open to all members of CoinAwesome.com, and for as little as $20.00 you can advertise in this area. 
+                  a(href='http://www.CoinAwesome.com/advertising') Get started ›
+              .help-section.help-adserver
+                p
+                  | This is a new ad format that we are currently testing. We often try new types of ads in a limited capacity. If you have feedback, please let us know in the 
+                  a(href='http://www.CoinAwesome.com/r/ads') ads subreddit
+                  | .
+              .help-section.help-organic
+                p
+                  | This area shows new and upcoming links. Vote on links here to help them become popular, and click the forwards and backwards buttons to view more.
+              .help-section.help-interestbar
+                p
+                  | Enter a keyword or topic to discover new subreddits around your interests. Be specific!
+                p
+                  | You can access this tool at any time on the 
+                  a(href='http://www.CoinAwesome.com/subreddits/') /subreddits/
+                  |  page.
+        script.
+          r.spotlight.setup( [], 0.0, true, "CoinAwesome" )
+      .spacer
+        style.
+          body >.content .link .rank, .rank-spacer { width: 6.2ex } body >.content .link .midcol, .midcol-spacer { width: 4.1ex } .adsense-wrap { background-color: #eff7ff; font-size: 18px; padding-left: 6.3ex; padding-right: 5px; };
+          body .pagename a {  background-image: 'http://coinawesome.com/awesome/coinAwesomeBW50.png' !important}
+        #siteTable.sitetable.linklisting
+          //- each tip in tips
+          //-   .thing.id-t3_2yxy2x.odd.gilded.stickied.link.self(onclick='click_thing(this)', data-fullname='t3_2yxy2x')
+          //-     p.parent
+          //-     span.rank
+          //-     .midcol.unvoted
+          //-       .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-       .score.dislikes 430
+          //-       .score.unvoted 431
+          //-       .score.likes 432
+          //-       .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-     a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/2yxy2x/rbitcoin_faq_newcomers_please_read/')
+          //-     .entry.unvoted
+          //-       p.title
+          //-         a.title.may-blank(href='/r/CoinAwesome/comments/2yxy2x/rbitcoin_faq_newcomers_please_read/', tabindex='1') /r/CoinAwesome FAQ - Newcomers please read
+          //-         span.domain
+          //-           | (
+          //-           a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-           | )
+          //-       .expando-button.collapsed.selftext
+          //-       p.tagline
+          //-         | submitted 
+          //-         time.live-timestamp(title='Fri Mar 13 19:36:58 2015 UTC', datetime='2015-03-13T12:36:58-07:00') 4 months ago
+          //-         time.edited-timestamp(title='last edited 1 month ago', datetime='2015-06-12T08:29:00+00:00') *
+          //-         |  by 
+          //-         a.author.moderator.may-blank.id-t2_d7sse(href='http://www.CoinAwesome.com/user/BashCo') BashCo
+          //-         span.userattrs
+          //-           | [
+          //-           a.moderator(title='moderator of /r/CoinAwesome, speaking officially', href='/r/CoinAwesome/about/moderators') M
+          //-           | ]
+          //-         |  - 
+          //-         span.stickied-tagline(title="selected by this subreddit's moderators") stickied post
+          //-       ul.flat-list.buttons
+          //-         li.first
+          //-           a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/2yxy2x/rbitcoin_faq_newcomers_please_read/') 95 comments
+          //-         li.share
+          //-           a.post-sharing-button(href='javascript: void 0;') share
+          //-       .expando(style='display: none')
+          //-         span.error loading...
+          //-     .child
+          //-     .clearleft
+          //-   .clearleft
+
+          each tip in tips
+            if tip.urlData
+              include tipLate
+              
+
+          //- .thing.id-t3_3dtxu9.odd.link(onclick='click_thing(this)', data-fullname='t3_3dtxu9')
+          //-   p.parent
+          //-   span.rank 2
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 40
+          //-     .score.unvoted 41
+          //-     .score.likes 42
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.may-blank(href='http://www.usatoday.com/story/tech/2015/07/18/some-retailers-banking-virtual-money/30365739/')
+          //-     img(src='//a.thumbs.redditmedia.com/cY3tzXuHNqnQ7WB1Cn8NO06o85xWPWlnQGK4K9SzEL0.jpg', width='70', height='36', alt='')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='http://www.usatoday.com/story/tech/2015/07/18/some-retailers-banking-virtual-money/30365739/', tabindex='1') CoinAwesome on the cover of USA Today app this morning.
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/usatoday.com/') usatoday.com
+          //-         | )
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 12:57:13 2015 UTC', datetime='2015-07-19T12:57:13+00:00') 2 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_ijyp3(href='http://www.CoinAwesome.com/user/olliec420') olliec420
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dtxu9/bitcoin_on_the_cover_of_usa_today_app_this_morning/') 9 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3du0qc.even.link.self(onclick='click_thing(this)', data-fullname='t3_3du0qc')
+          //-   p.parent
+          //-   span.rank 3
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 34
+          //-     .score.unvoted 35
+          //-     .score.likes 36
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3du0qc/i_can_confirm_the_backpage_effect/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3du0qc/i_can_confirm_the_backpage_effect/', tabindex='1') I can confirm "The Backpage Effect"
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 13:33:46 2015 UTC', datetime='2015-07-19T13:33:46+00:00') 2 hours ago
+          //-       time.edited-timestamp(title='last edited 1 hour ago', datetime='2015-07-19T13:58:19+00:00') *
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_51t0m(href='http://www.CoinAwesome.com/user/rnvk') rnvk
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3du0qc/i_can_confirm_the_backpage_effect/') 34 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dtkwr.odd.link(onclick='click_thing(this)', data-fullname='t3_3dtkwr')
+          //-   p.parent
+          //-   span.rank 4
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 55
+          //-     .score.unvoted 56
+          //-     .score.likes 57
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.may-blank(href='https://www.youtube.com/watch?v=AMOQhRcDxEc&list=WL&index=411')
+          //-     img(src='//b.thumbs.redditmedia.com/kdj00kQfkrKsUzvzPULU1cjJNut_GBzsK6lPmpPpSSg.jpg', width='70', height='52', alt='')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='https://www.youtube.com/watch?v=AMOQhRcDxEc&list=WL&index=411', tabindex='1')
+          //-         | Online Dominatrix Describing How Unreliable, Expensive and Limited Current Online Payments Are For Them
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/youtube.com/') youtube.com
+          //-         | )
+          //-     .expando-button.collapsed.video
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 09:19:25 2015 UTC', datetime='2015-07-19T09:19:25+00:00') 6 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_3dslr(href='http://www.CoinAwesome.com/user/waldoxwaldox') waldoxwaldox
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dtkwr/online_dominatrix_describing_how_unreliable/') 20 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none', data-cachedhtml=' <iframe src="//www.redditmedia.com/mediaembed/3dtkwr" id="media-embed-3dtkwr-ruw" class="media-embed" width="610" height="460" border="0" frameBorder="0" scrolling="no" allowfullscreen></iframe> ')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dt675.even.link.self(onclick='click_thing(this)', data-fullname='t3_3dt675')
+          //-   p.parent
+          //-   span.rank 5
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 91
+          //-     .score.unvoted 92
+          //-     .score.likes 93
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3dt675/why_would_i_use_bitcoin_when_the_current_system/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3dt675/why_would_i_use_bitcoin_when_the_current_system/', tabindex='1') Why would i use bitcoin when the current system is working perfectly?
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 05:22:32 2015 UTC', datetime='2015-07-19T05:22:32+00:00') 10 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_o76vp(href='http://www.CoinAwesome.com/user/openbit') openbit
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dt675/why_would_i_use_bitcoin_when_the_current_system/') 57 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dsyj6.odd.link.self(onclick='click_thing(this)', data-fullname='t3_3dsyj6')
+          //-   p.parent
+          //-   span.rank 6
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 110
+          //-     .score.unvoted 111
+          //-     .score.likes 112
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3dsyj6/the_backpage_effect/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3dsyj6/the_backpage_effect/', tabindex='1') The backpage effect?
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 03:54:35 2015 UTC', datetime='2015-07-19T03:54:35+00:00') 11 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_b627t(href='http://www.CoinAwesome.com/user/jratcliff63367') jratcliff63367
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dsyj6/the_backpage_effect/') 92 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dtyvh.even.link(onclick='click_thing(this)', data-fullname='t3_3dtyvh')
+          //-   p.parent
+          //-   span.rank 7
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 16
+          //-     .score.unvoted 17
+          //-     .score.likes 18
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.may-blank(href='http://avc.com/2015/07/the-no-hands-up-syndrome/#')
+          //-     img(src='//a.thumbs.redditmedia.com/0gv1ywP6f6drybqgPOPNFM3KzF1qtJRp2qWrunTgXb8.jpg', width='70', height='52', alt='')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='http://avc.com/2015/07/the-no-hands-up-syndrome/#', tabindex='1') The No Hands Syndrome
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/avc.com/') avc.com
+          //-         | )
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 13:10:31 2015 UTC', datetime='2015-07-19T13:10:31+00:00') 2 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_ep4r2(href='http://www.CoinAwesome.com/user/Egon_1') Egon_1
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dtyvh/the_no_hands_syndrome/') 5 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3drnz0.odd.link(onclick='click_thing(this)', data-fullname='t3_3drnz0')
+          //-   p.parent
+          //-   span.rank 8
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 288
+          //-     .score.unvoted 289
+          //-     .score.likes 290
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.may-blank(href='https://www.youtube.com/watch?v=9AmMV-Bmhh8')
+          //-     img(src='//b.thumbs.redditmedia.com/3bVt7nnQld1xlXUaEXvV5OHUjmcZ1iw0vdDYTGu1n_c.jpg', width='70', height='52', alt='')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='https://www.youtube.com/watch?v=9AmMV-Bmhh8', tabindex='1') Solar-powered CoinAwesome Mining farm
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/youtube.com/') youtube.com
+          //-         | )
+          //-     .expando-button.collapsed.video
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sat Jul 18 20:17:39 2015 UTC', datetime='2015-07-18T13:17:39-07:00') 19 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_kem2u(href='http://www.CoinAwesome.com/user/EvolvingIntoAHuman') EvolvingIntoAHuman
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3drnz0/solarpowered_bitcoin_mining_farm/') 69 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none', data-cachedhtml=' <iframe src="//www.redditmedia.com/mediaembed/3drnz0" id="media-embed-3drnz0-n8t" class="media-embed" width="610" height="348" border="0" frameBorder="0" scrolling="no" allowfullscreen></iframe> ')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dty9w.even.link(onclick='click_thing(this)', data-fullname='t3_3dty9w')
+          //-   p.parent
+          //-   span.rank 9
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 12
+          //-     .score.unvoted 13
+          //-     .score.likes 14
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.default.may-blank(href='https://statoshi.info/dashboard/db/transactions?from=1434718891443&to=1437310891443')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='https://statoshi.info/dashboard/db/transactions?from=1434718891443&to=1437310891443', tabindex='1') Looks like the latest 'stress test' is over
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/statoshi.info/') statoshi.info
+          //-         | )
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 13:02:37 2015 UTC', datetime='2015-07-19T13:02:37+00:00') 2 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_l9lbb(href='http://www.CoinAwesome.com/user/CoinAwesomeAddress') CoinAwesomeAddress
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dty9w/looks_like_the_latest_stress_test_is_over/') 9 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3du9lt.odd.link(onclick='click_thing(this)', data-fullname='t3_3du9lt')
+          //-   p.parent
+          //-   span.rank 10
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.likes •
+          //-     .score.unvoted •
+          //-     .score.dislikes •
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.may-blank(href='http://imgur.com/p3UsS8r')
+          //-     img(src='//b.thumbs.redditmedia.com/d8mrLel2V2TnO8WbE-pmOtQ4crBw5Lf2jjPZdDgrMKM.jpg', width='70', height='70', alt='')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='http://imgur.com/p3UsS8r', tabindex='1') TIL that you can track CoinAwesome price via the iOS stocks app! Just add BTCUSD=X!
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/imgur.com/') imgur.com
+          //-         | )
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 15:13:08 2015 UTC', datetime='2015-07-19T15:13:08+00:00') 23 minutes ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_hg4z4(href='http://www.CoinAwesome.com/user/smileytechguy') smileytechguy
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3du9lt/til_that_you_can_track_bitcoin_price_via_the_ios/') 1 comment
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3du21l.even.link.self(onclick='click_thing(this)', data-fullname='t3_3du21l')
+          //-   p.parent
+          //-   span.rank 11
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.likes •
+          //-     .score.unvoted •
+          //-     .score.dislikes •
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3du21l/legal_fears_slow_ross_ulbricht_appeal_fundraising/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3du21l/legal_fears_slow_ross_ulbricht_appeal_fundraising/', tabindex='1') Legal Fears Slow Ross Ulbricht Appeal Fundraising
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 13:49:35 2015 UTC', datetime='2015-07-19T13:49:35+00:00') 1 hour ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_ex2rk(href='http://www.CoinAwesome.com/user/Dannysomething') Dannysomething
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3du21l/legal_fears_slow_ross_ulbricht_appeal_fundraising/') 1 comment
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dtjmw.odd.link.self(onclick='click_thing(this)', data-fullname='t3_3dtjmw')
+          //-   p.parent
+          //-   span.rank 12
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 22
+          //-     .score.unvoted 23
+          //-     .score.likes 24
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3dtjmw/change_my_view_i_feel_like_the_antirbf_narrative/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3dtjmw/change_my_view_i_feel_like_the_antirbf_narrative/', tabindex='1')
+          //-         | [Change My View] I feel like the anti-RBF narrative is pro-Trust and anti-CoinAwesome
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 08:55:50 2015 UTC', datetime='2015-07-19T08:55:50+00:00') 6 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_ci8yi(href='http://www.CoinAwesome.com/user/WiWr') WiWr
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dtjmw/change_my_view_i_feel_like_the_antirbf_narrative/') 34 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dti8l.even.link(onclick='click_thing(this)', data-fullname='t3_3dti8l')
+          //-   p.parent
+          //-   span.rank 13
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 19
+          //-     .score.unvoted 20
+          //-     .score.likes 21
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.may-blank(href='http://www.rt.com/news/310170-platinum-asteroid-2011-uw-158/')
+          //-     img(src='//b.thumbs.redditmedia.com/DC63C6zr9uIpQYi9yV0gawNLWa-r9HrQMbTOmfQRQTI.jpg', width='70', height='38', alt='')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='http://www.rt.com/news/310170-platinum-asteroid-2011-uw-158/', tabindex='1')
+          //-         | This is why I don't think "rare"/"precious" metals are a good store of value... rare my ass!
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/rt.com/') rt.com
+          //-         | )
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 08:30:41 2015 UTC', datetime='2015-07-19T08:30:41+00:00') 7 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_35jey(href='http://www.CoinAwesome.com/user/lukerayes08') lukerayes08
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dti8l/this_is_why_i_dont_think_rareprecious_metals_are/') 33 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dtdrw.odd.link.self(onclick='click_thing(this)', data-fullname='t3_3dtdrw')
+          //-   p.parent
+          //-   span.rank 14
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 24
+          //-     .score.unvoted 25
+          //-     .score.likes 26
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3dtdrw/mike_caldwell_reveals_an_almost_complete_private/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3dtdrw/mike_caldwell_reveals_an_almost_complete_private/', tabindex='1')
+          //-         | Mike Caldwell reveals an almost complete private key in The Rise and Rise of CoinAwesome. Find it and claim 10,000 bits.
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 07:12:06 2015 UTC', datetime='2015-07-19T07:12:06+00:00') 8 hours ago
+          //-       time.edited-timestamp(title='last edited 4 hours ago', datetime='2015-07-19T10:59:17+00:00') *
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_l0nas(href='http://www.CoinAwesome.com/user/riksnel') riksnel
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dtdrw/mike_caldwell_reveals_an_almost_complete_private/') 22 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3du28u.even.link.self(onclick='click_thing(this)', data-fullname='t3_3du28u')
+          //-   p.parent
+          //-   span.rank 15
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.likes •
+          //-     .score.unvoted •
+          //-     .score.dislikes •
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3du28u/could_bitcoin_help_prevent_the_censorship_like/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3du28u/could_bitcoin_help_prevent_the_censorship_like/', tabindex='1')
+          //-         | Could CoinAwesome help prevent the censorship like that of all the comments that is happening in the top post of r/Documentaries right now?
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 13:52:00 2015 UTC', datetime='2015-07-19T13:52:00+00:00') 1 hour ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_3zc8m(href='http://www.CoinAwesome.com/user/CP70') CP70
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3du28u/could_bitcoin_help_prevent_the_censorship_like/') 9 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3du6y3.odd.link(onclick='click_thing(this)', data-fullname='t3_3du6y3')
+          //-   p.parent
+          //-   span.rank 16
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.likes •
+          //-     .score.unvoted •
+          //-     .score.dislikes •
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.may-blank(href='http://www.financemagnates.com/cryptocurrency/interview/erik-voorhees-explains-why-he-believes-bitcoin-should-just-left-alone')
+          //-     img(src='//b.thumbs.redditmedia.com/JInLS4EiUHfrIINA9aQzotXOvNK6aTq6oVG8W43Sz4A.jpg', width='70', height='31', alt='')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='http://www.financemagnates.com/cryptocurrency/interview/erik-voorhees-explains-why-he-believes-bitcoin-should-just-left-alone', tabindex='1')
+          //-         | Finance Magnates - Erik Voorhees Explains Why He Feels Government Ought to Leave CoinAwesome Alone
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/financemagnates.com/') financemagnates.com
+          //-         | )
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 14:45:08 2015 UTC', datetime='2015-07-19T14:45:08+00:00') 51 minutes ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_5c7dw(href='http://www.CoinAwesome.com/user/evoorhees') evoorhees
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3du6y3/finance_magnates_erik_voorhees_explains_why_he/') 2 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dtiqa.even.link.self(onclick='click_thing(this)', data-fullname='t3_3dtiqa')
+          //-   p.parent
+          //-   span.rank 17
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 13
+          //-     .score.unvoted 14
+          //-     .score.likes 15
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3dtiqa/new_protocol_idea_for_interested_developers/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3dtiqa/new_protocol_idea_for_interested_developers/', tabindex='1')
+          //-         | New protocol idea for interested developers involving torrenting (Torrent Seeding for BTC Instead of Mining for It)
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 08:38:56 2015 UTC', datetime='2015-07-19T08:38:56+00:00') 6 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_nlys4(href='http://www.CoinAwesome.com/user/theeson') theeson
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dtiqa/new_protocol_idea_for_interested_developers/') 15 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dtjud.odd.link.self(onclick='click_thing(this)', data-fullname='t3_3dtjud')
+          //-   p.parent
+          //-   span.rank 18
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 12
+          //-     .score.unvoted 13
+          //-     .score.likes 14
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3dtjud/what_is_a_split_wallet_like_the_one_generated_by/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3dtjud/what_is_a_split_wallet_like_the_one_generated_by/', tabindex='1') What is a Split wallet, like the one generated by bitaddress.org
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 08:59:38 2015 UTC', datetime='2015-07-19T08:59:38+00:00') 6 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_7phpe(href='http://www.CoinAwesome.com/user/mcr55') mcr55
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dtjud/what_is_a_split_wallet_like_the_one_generated_by/') 6 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dt02y.even.link(onclick='click_thing(this)', data-fullname='t3_3dt02y')
+          //-   p.parent
+          //-   span.rank 19
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 24
+          //-     .score.unvoted 25
+          //-     .score.likes 26
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.may-blank(href='https://goldsilverbitcoin.com/gold-silver-bitcoin-venezuela-puerto-rico-greece/')
+          //-     img(src='//b.thumbs.redditmedia.com/WbFQhaNA6OSdOtEPjyzApMgLynYsetNzpYT1HNtpcCg.jpg', width='70', height='38', alt='')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='https://goldsilverbitcoin.com/gold-silver-bitcoin-venezuela-puerto-rico-greece/', tabindex='1') In Greece, Google Trends Search Queries For CoinAwesome Outpace Gold
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/goldsilverbitcoin.com/') goldsilverbitcoin.com
+          //-         | )
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 04:11:00 2015 UTC', datetime='2015-07-19T04:11:00+00:00') 11 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_c94u0(href='http://www.CoinAwesome.com/user/GldSlvBtc') GldSlvBtc
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dt02y/in_greece_google_trends_search_queries_for/') 13 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dsvw6.odd.link(onclick='click_thing(this)', data-fullname='t3_3dsvw6')
+          //-   p.parent
+          //-   span.rank 20
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 28
+          //-     .score.unvoted 29
+          //-     .score.likes 30
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.may-blank(href='https://ihb.io/2015-07-18/news/fiverr-and-coinbase-850')
+          //-     img(src='//b.thumbs.redditmedia.com/eZ18TqsZmAIJ4mqY9_Pi-WRg5nSFDV_JjFSrr7KyukM.jpg', width='70', height='52', alt='')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='https://ihb.io/2015-07-18/news/fiverr-and-coinbase-850', tabindex='1')
+          //-         | Fiverr And Coinbase: What .01820 CoinAwesome can buy today and how this trend is going to change the world • IHB News™
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/ihb.io/') ihb.io
+          //-         | )
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 03:25:01 2015 UTC', datetime='2015-07-19T03:25:01+00:00') 12 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_owkrh(href='http://www.CoinAwesome.com/user/Freelancer79') Freelancer79
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dsvw6/fiverr_and_coinbase_what_01820_bitcoin_can_buy/') 9 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3du15i.even.link.self(onclick='click_thing(this)', data-fullname='t3_3du15i')
+          //-   p.parent
+          //-   span.rank 21
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.likes •
+          //-     .score.unvoted •
+          //-     .score.dislikes •
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3du15i/why_dont_they_have_gift_cards_for_bitcoin_that/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3du15i/why_dont_they_have_gift_cards_for_bitcoin_that/', tabindex='1') Why don't they have gift cards for bitcoin that you can buy in stores?
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 13:38:38 2015 UTC', datetime='2015-07-19T13:38:38+00:00') 1 hour ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_nmjkg(href='http://www.CoinAwesome.com/user/RapperOnDrugs') RapperOnDrugs
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3du15i/why_dont_they_have_gift_cards_for_bitcoin_that/') 17 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3dsnxy.odd.link.self(onclick='click_thing(this)', data-fullname='t3_3dsnxy')
+          //-   p.parent
+          //-   span.rank 22
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 33
+          //-     .score.unvoted 34
+          //-     .score.likes 35
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3dsnxy/drives_me_nuts/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3dsnxy/drives_me_nuts/', tabindex='1') Drives me nuts.
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 02:01:10 2015 UTC', datetime='2015-07-19T02:01:10+00:00') 13 hours ago
+          //-       time.edited-timestamp(title='last edited 5 hours ago', datetime='2015-07-19T10:05:03+00:00') *
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_j7wb(href='http://www.CoinAwesome.com/user/redpola') redpola
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3dsnxy/drives_me_nuts/') 45 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3drp05.even.link.self(onclick='click_thing(this)', data-fullname='t3_3drp05')
+          //-   p.parent
+          //-   span.rank 23
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.dislikes 79
+          //-     .score.unvoted 80
+          //-     .score.likes 81
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3drp05/meta_rbitcoin_should_sticky_the/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3drp05/meta_rbitcoin_should_sticky_the/', tabindex='1')
+          //-         | [META] /r/bitcoin should sticky the /r/millionairemakers donation thread every month - it is the single most effective way to promote the use of digital currency
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sat Jul 18 20:26:34 2015 UTC', datetime='2015-07-18T20:26:34+00:00') 19 hours ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_9kut7(href='http://www.CoinAwesome.com/user/aminok') aminok
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3drp05/meta_rbitcoin_should_sticky_the/') 33 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3du4if.odd.link.self(onclick='click_thing(this)', data-fullname='t3_3du4if')
+          //-   p.parent
+          //-   span.rank 24
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.likes •
+          //-     .score.unvoted •
+          //-     .score.dislikes •
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.self.may-blank(href='/r/CoinAwesome/comments/3du4if/kointron_and_hobokoin_have_merged/')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='/r/CoinAwesome/comments/3du4if/kointron_and_hobokoin_have_merged/', tabindex='1') Kointron and Hobokoin have Merged
+          //-       span.domain
+          //-         | (
+          //-         a(href='/r/CoinAwesome/') self.CoinAwesome
+          //-         | )
+          //-     .expando-button.collapsed.selftext
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 14:18:12 2015 UTC', datetime='2015-07-19T14:18:12+00:00') 1 hour ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_oik8w(href='http://www.CoinAwesome.com/user/PurposeOverProfit') PurposeOverProfit
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.empty.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3du4if/kointron_and_hobokoin_have_merged/') comment
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          //- .thing.id-t3_3du4f0.even.controversial.link(onclick='click_thing(this)', data-fullname='t3_3du4f0')
+          //-   p.parent
+          //-   span.rank 25
+          //-   .midcol.unvoted
+          //-     .arrow.up.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='upvote', tabindex='0')
+          //-     .score.likes •
+          //-     .score.unvoted •
+          //-     .score.dislikes •
+          //-     .arrow.down.login-required(onclick='$(this).vote(r.config.vote_hash, null, event)', role='button', aria-label='downvote', tabindex='0')
+          //-   a.thumbnail.default.may-blank(href='http://www.bloomberg.com/news/articles/2014-07-30/bitcoin-tax-free-transactions-face-test-at-top-eu-court')
+          //-   .entry.unvoted
+          //-     p.title
+          //-       a.title.may-blank(href='http://www.bloomberg.com/news/articles/2014-07-30/bitcoin-tax-free-transactions-face-test-at-top-eu-court', tabindex='1') CoinAwesome Tax-Free Transactions Face Test at Top EU Court
+          //-       span.domain
+          //-         | (
+          //-         a(href='/domain/bloomberg.com/') bloomberg.com
+          //-         | )
+          //-     p.tagline
+          //-       | submitted 
+          //-       time.live-timestamp(title='Sun Jul 19 14:17:08 2015 UTC', datetime='2015-07-19T14:17:08+00:00') 1 hour ago
+          //-       |  by 
+          //-       a.author.may-blank.id-t2_3w4mx(href='http://www.CoinAwesome.com/user/based2') based2
+          //-       span.userattrs
+          //-     ul.flat-list.buttons
+          //-       li.first
+          //-         a.comments.may-blank(href='http://www.CoinAwesome.com/r/CoinAwesome/comments/3du4f0/bitcoin_taxfree_transactions_face_test_at_top_eu/') 3 comments
+          //-       li.share
+          //-         a.post-sharing-button(href='javascript: void 0;') share
+          //-     .expando(style='display: none')
+          //-       span.error loading...
+          //-   .child
+          //-   .clearleft
+          //- .clearleft
+          .nav-buttons
+            span.nextprev
+              | view more: 
+              a(href='/#{pageType}/?page=#{pageNum+1}', rel='nofollow next') next ›
+    include rfooter

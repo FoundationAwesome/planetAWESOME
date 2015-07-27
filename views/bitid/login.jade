@@ -1,0 +1,109 @@
+html
+  include ../rhead
+  body
+    include ../bodyStart
+    p
+      | Awesome uses BitID cryptographic signin to be more secure and more convenient than regular username-password-based
+      | sign-in systems. You will need to install the CoinAwesome wallet first.
+    p
+      h2
+        a(class='loginAnchor', href='#{bitid.uri}') CLICK HERE TO LOG IN
+        //img(alt='Click on QRcode to activate   compatible desktop wallet', src='#{bitid.qrcode}')
+        //-p
+          | No compatible wallet ? Use 
+          a#gomanual(href='#') manual signing
+          | .
+      //-#manual.tab-pane
+        .spacer50
+        h3 Manual signing
+        p
+          | The user experience is quite combersome, but it has the advangage of being compatible with all wallets
+          | including Bitcoin Core.
+        p
+          | Please sign the challenge in the box below using the private key of this Bitcoin address you want to
+          | identify yourself with. Copy the text, open your wallet, choose your Bitcoin address, select the sign message
+          | function, paste the text into the message input and sign. After it is done, copy and paste the signature
+          | into the field below.
+        p
+          | Cumbersome. Yep. Much better with a simple scan or click using a compatible wallet :)
+        pre #{bitid.uri}
+        .form-group
+          label Bitcoin address
+          input#address.form-control(type='text', name='address', placeholder='Enter your public Bitcoin address')
+        .form-group
+          label Signature
+          input#signature.form-control(type='text', name='signature', placeholder='Enter the signature')
+        button#check.btn.btn-success(data-loading-text='Verifying signature') Sign in !
+        .spacer40
+        p
+          | You can also simulate the response of the wallet by executing the following API call :
+        pre#curl.
+          \n            
+    //-script.
+      $(function () {
+      //- $('#loginTab a:first').tab('show')
+      //- $('#gomanual').on('click', function() {
+      //- $('#loginTab a[href="#manual"]').tab('show');
+      //- });
+
+      //- $('#check').on('click', function() {
+      //- confirmSignature();
+      //- });
+      timeStart = new Date().getTime();
+      setTimeout(checkForAuth, 1000);
+
+      $("#address").on("input", setCurl);
+      $("#signature").on("input", setCurl);
+        setCurl();
+      });
+      function setCurl() {
+        $("#curl").html("curl -X POST #{'http://localhost:3000/callback'.replace("/", "\\\/") } \\\n"
+        + "  --header \"Content-Type: application/json\" \\\n"
+        + "  --data '{\"uri\" : \"#{bitid.uri}\", \n"
+        + "    \"address\" : \"" + $("#address").val() + "\", \n"
+        + "    \"signature\" : \"" + $("#signature").val() + "\"}'");
+      }
+        //- function confirmSignature() {
+        //-   //- $("#check").button('loading')
+        //-   $.ajax({
+        //-     url: "http://localhost:3000/callback",
+        //-     data: {uri: '#{bitid.uri}', address: $('#address').val(), signature: $('#signature').val()},
+        //-     type: "post",
+        //-     error: function(data) {
+        //-       $("#check").button('reset');
+        //-       alert("Error : " + JSON.parse(data.responseText).message)
+        //-     }
+        //-   })
+        //- }
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    script.
+      $(function () {
+        timeStart = new Date().getTime()
+        times = 0
+        //- setTimeout(checkForAuth, 1000)
+
+        function checkForAuth() {
+          $.ajax({
+            url: "/auth",
+            type: "get",
+          success: function(data) {
+            if (data.auth == 1) {
+              window.location = '/user';
+            }
+          }
+          });
+          if (new Date().getTime() - timeStart < 60*10*1000 && times < 5) {
+            times++
+            console.log(times)
+            setTimeout(checkForAuth, 1000);
+          }
+        }
+
+        $('.loginAnchor').click(function(){
+          checkForAuth()
+          })
+      })
+
+
+
+

@@ -1,0 +1,142 @@
+doctype html
+html(xmlns='http://www.w3.org/1999/xhtml', lang='en', xml:lang='en')
+  include rhead
+
+  body.listing-page.hot-page
+    include bodyStart
+
+    a(name='content')
+    .content(role='main')
+      style.
+        body >.content .link .rank, .rank-spacer { width: 1.1ex } body >.content .link .midcol, .midcol-spacer { width: 3.1ex } .adsense-wrap { background-color: #eff7ff; font-size: 18px; padding-left: 4.2ex; padding-right: 5px; }
+      if tip && tip.urlData
+        #siteTable.sitetable.linklisting
+          .thing.id-t3_2qrdet.odd.link.self(onclick='click_thing(this)', data-fullname='t3_2qrdet', data-cid='')
+            p.parent
+            span.rank
+            .midcol.unvoted
+              .arrow.up.login-required(onclick='$(this).show_unvotable_message()', role='button', aria-label='upvote', tabindex='0')
+              .score.dislikes 1
+              .score.unvoted 2
+              .score.likes 3
+              .arrow.down.login-required(onclick='$(this).show_unvotable_message()', role='button', aria-label='downvote', tabindex='0')
+            .entry.unvoted
+              p.title
+                a.title.may-blank(href='/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/', tabindex='1') #{tip.urlData.meta.title}
+                span.domain
+                  | (
+                  a(href='/r/leeward/') self.leeward
+                  | )
+              p.tagline
+                | submitted 
+                time.live-timestamp(title='Mon Dec 29 23:37:50 2014 UTC', datetime='2014-12-29T15:37:50-08:00') 6 months ago
+                |  by 
+                a.author.may-blank.id-t2_k5uyf(href='https://www.reddit.com/user/TychesLychee') TychesLychee
+                span.userattrs
+              .unvotable-message sorry, this has been archived and can no longer be voted on
+              .expando
+                form#form-t3_2qrdet45t.usertext(action='#', onsubmit="return post_form(this, 'editusertext')")
+                  input(type='hidden', name='thing_id', value='t3_2qrdet')
+                  .usertext-body.may-blank-within.md-container
+                    .md
+                      p
+                        | Hey, just thought I'd let you know that I used used a modified version of your theme for a our reading group subreddit.
+              ul.flat-list.buttons
+                li.first
+                  a.comments.may-blank(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/') 2 comments
+                li.share
+                  a.post-sharing-button(href='javascript: void 0;') share
+            .child
+            .clearleft
+          .clearleft
+        .commentarea
+          .panestack-title
+            span.title all 2 comments
+          .menuarea
+            .spacer
+              span.dropdown-title.lightdrop sorted by: 
+              .dropdown.lightdrop(onclick='open_menu(this)')
+                span.selected best
+              .drop-choices.lightdrop
+                a.choice(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/?sort=top') top
+                a.choice(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/?sort=new') new
+                a.hidden.choice(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/?sort=hot') hot
+                a.choice(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/?sort=controversial') controversial
+                a.choice(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/?sort=old') old
+                a.hidden.choice(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/?sort=random') random
+                a.choice(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/?sort=qa') q&a
+            .spacer
+          #siteTable_t3_2qrdet.sitetable.nestedlisting
+            .thing.id-t1_cn8s673.noncollapsed.comment(onclick='click_thing(this)', data-fullname='t1_cn8s673')
+              p.parent
+                a(name='cn8s673')
+              .midcol.unvoted
+                .arrow.up.login-required(onclick='$(this).show_unvotable_message()', role='button', aria-label='upvote', tabindex='0')
+                .arrow.down.login-required(onclick='$(this).show_unvotable_message()', role='button', aria-label='downvote', tabindex='0')
+              .entry.unvoted
+                p.tagline
+                  a.expand(href='javascript:void(0)', onclick='return togglecomment(this)') [–]
+                  a.author.submitter.may-blank.id-t2_k5uyf(href='https://www.reddit.com/user/TychesLychee') TychesLychee
+                  span.userattrs
+                    | [
+                    a.submitter(title='submitter', href='/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/') S
+                    | ]
+                  span.score.dislikes 1 point
+                  span.score.unvoted 2 points
+                  span.score.likes 3 points
+                  time.live-timestamp(title='Mon Dec 29 23:41:53 2014 UTC', datetime='2014-12-29T15:41:53-08:00') 6 months ago
+                  time.edited-timestamp(title='last edited 6 months ago', datetime='2014-12-29T23:47:38+00:00') *
+                  a.numchildren(href='javascript:void(0)', onclick='return togglecomment(this)') (1 child)
+                  .unvotable-message sorry, this has been archived and can no longer be voted on
+                form#form-t1_cn8s6731nm.usertext(action='#', onsubmit="return post_form(this, 'editusertext')")
+                  input(type='hidden', name='thing_id', value='t1_cn8s673')
+                  .usertext-body.may-blank-within.md-container
+                    .md
+                      p I have put a note crediting you on the side.
+                ul.flat-list.buttons
+                  li.first
+                    a.bylink(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/cn8s673', rel='nofollow') permalink
+                  li.comment-save-button.save-button
+                    a(href='javascript:void(0)') save
+                  li.give-gold-button
+                    a.give-gold.login-required(href='/gold?goldtype=gift&months=1&thing=t1_cn8s673', title='give reddit gold in appreciation of this post.') give gold
+              .child
+                #siteTable_t1_cn8s673.sitetable.listing
+                  .thing.id-t1_cn975jf.noncollapsed.comment(onclick='click_thing(this)', data-fullname='t1_cn975jf')
+                    p.parent
+                      a(name='cn975jf')
+                    .midcol.unvoted
+                      .arrow.up.login-required(onclick='$(this).show_unvotable_message()', role='button', aria-label='upvote', tabindex='0')
+                      .arrow.down.login-required(onclick='$(this).show_unvotable_message()', role='button', aria-label='downvote', tabindex='0')
+                    .entry.unvoted
+                      p.tagline
+                        a.expand(href='javascript:void(0)', onclick='return togglecomment(this)') [–]
+                        a.author.may-blank.id-t2_hfnpx(href='https://www.reddit.com/user/tote_hughes') tote_hughes
+                        span.userattrs
+                        span.score.dislikes 0 points
+                        span.score.unvoted 1 point
+                        span.score.likes 2 points
+                        time.live-timestamp(title='Tue Dec 30 09:32:39 2014 UTC', datetime='2014-12-30T01:32:39-08:00') 6 months ago
+                        a.numchildren(href='javascript:void(0)', onclick='return togglecomment(this)') (0 children)
+                        .unvotable-message sorry, this has been archived and can no longer be voted on
+                      form#form-t1_cn975jfruk.usertext(action='#', onsubmit="return post_form(this, 'editusertext')")
+                        input(type='hidden', name='thing_id', value='t1_cn975jf')
+                        .usertext-body.may-blank-within.md-container
+                          .md
+                            p Thank you! It looks very good.
+                      ul.flat-list.buttons
+                        li.first
+                          a.bylink(href='https://www.reddit.com/r/leeward/comments/2qrdet/rphilosophyofinfo_now_based_on_leeward/cn975jf', rel='nofollow') permalink
+                        li.comment-save-button.save-button
+                          a(href='javascript:void(0)') save
+                        li
+                          a.bylink(href='#cn8s673', rel='nofollow') parent
+                        li.give-gold-button
+                          a.give-gold.login-required(href='/gold?goldtype=gift&months=1&thing=t1_cn975jf', title='give reddit gold in appreciation of this post.') give gold
+                    .child
+                    .clearleft
+                  .clearleft
+              .clearleft
+            .clearleft
+    
+    include rfooter
