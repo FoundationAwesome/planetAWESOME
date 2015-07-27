@@ -3,14 +3,8 @@ router = express.Router()
 _ = require 'lodash'
 color = require 'colors'
 timeago = require 'timeago'
-# ipfs = require '../scripts/ipfs'
-
-db = require '../scripts/db'
 
 dbAwesome = require '../scanScripts/scanDB.iced'
-# await dbAwesome.flat.getValues 'tx', defer e, likes
-# unless e
-# 	console.log 'HELL YA', likes
 
 getTransactions = (txids, cb) ->
 	out = []

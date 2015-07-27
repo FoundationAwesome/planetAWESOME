@@ -3,9 +3,9 @@ html
 	body
 		include ../bodyStart
 		p 
-			h1 Welcome #{currentUser.address} 
+			h1 Welcome #{currentUser.address} (BTC version of your AWE address)
 		//- p.lead Your Bitcoin address is #{currentUser.address }
 		p Sign in count : #{currentUser.signinCount}
-		p
+		p Right now all you can do is to log-out again, but in a couple of days you will be able to comment!
 			h3
 				a.btn.btn-lg.btn-success(href='/logout', data-method='delete', role='button') Log out

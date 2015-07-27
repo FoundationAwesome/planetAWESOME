@@ -1,16 +1,20 @@
 .thing.even.link.self(onclick='')
   p.parent
-  span.rank #{tip.totalAWE} 
+  span.rank 
+    a(title='sum of all AWE units tipped') #{tip.totalAWE} 
   .midcol.unvoted
-    .arrow.up.login-required(onclick='', role='button', aria-label='upvote', tabindex='0')
+    a(title='to vote install the CoinAwesome wallet for Chrome and start tipping any website') 
+    .arrow.up.login-required(onclick='alert("To upvote install the CoinAwesome wallet and upvote though sending coins to the page.")', role='button', aria-label='upvote', tabindex='0')
     //.score.dislikes 123
-    .score.unvoted #{tip.txCount}
-    //.score.likes 321
-    .arrow.down.login-required(onclick='', role='button', aria-label='downvote', tabindex='0')
+    a(title='number of all blockchain transactions for this submission (URL)')
+      .score.unvoted #{tip.txCount}
+
+    //-.score.likes 321
+    //-.arrow.down.login-required(onclick='', role='button', aria-label='downvote', tabindex='0')
   if !tip.urlData.links.thumbnail
     a.thumbnail.default.may-blank(href='#{tip.urlData.url}')
   else
-    a.thumbnail.self.may-blank(href='#{tip.urlData.url}')
+    a.thumbnail.self.may-blank(href='#{tip.urlData.url}', title='#{tip.urlData.meta.description}')
       //- img(src='#{tip.urlData.links.thumbnail[0].href}')
       img(src='#{tip.urlData.links.thumbnail[0].href}', alt='')
 
@@ -20,7 +24,7 @@
         | #{tip.urlData.meta.title}
       span.domain
         | (
-        a(href='/r/CoinAwesome/') #{tip.urlData.meta.site}
+        a(title='#{tip.urlData.url}') #{tip.urlData.meta.site}
         | )
 
     //-.expando-button.collapsed.selftext
@@ -50,7 +54,8 @@
               | #{keyword}  
     ul.flat-list.buttons
       li.first
-        a.comments.may-blank(href='/url/#{encodeURIComponent(tip.urlData.url)}') 0 comments 
+        a.comments.may-blank(href='#') 0 comments (COMMING SOON)
+        //- a.comments.may-blank(href='/url/#{encodeURIComponent(tip.urlData.url)}') 0 comments 
       li.share
         a.post-sharing-button(href='javascript: void 0;') share
     //p

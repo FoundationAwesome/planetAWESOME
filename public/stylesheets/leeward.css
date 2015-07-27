@@ -135,7 +135,7 @@ a:hover {
     z-index: 99;
     font-weight: normal;
     letter-spacing: -2px;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
 }
 
 .pagename a:hover {
