@@ -52,6 +52,10 @@
           if i < 10
             span.keyword
               | #{keyword}  
+    //-p.icons
+      if tip.urlData.links.icon
+        each icon, i in tip.urlData.links.icon
+          img(src='#{icon[i].href}', alt='')
     ul.flat-list.buttons
       li.first
         a.comments.may-blank(href='#') 0 comments (COMMING SOON)
