@@ -49,8 +49,8 @@
     a#header-img-a(title='You Asked For Coins, We Gave You Awesome', href='http://coinawesome.com')
       //- img#header-img(src='http://coinawesome.com/awesome/coinAwesomeBW50.png', width='216', height='94', alt='CoinAwesome')
     span.hover.pagename
-      a(href='/new') planetAWES
-        img(src='http://coinawesome.com/awesome/coinAwesomeBW50.png' width='35px')
+      a(href='/') planet AWES
+        img(src='https://i.imgur.com/gkNaYpH.png' width='35px')
         | ME
     ul.tabmenu
       li
@@ -168,47 +168,62 @@
       //- p.users-online(title='logged-in users viewing this subreddit in the past 15 minutes')
       //-   span.number 743
       //-   span.word users here now
-      form#form-t5_2s3qjjad.usertext(action='#', onsubmit="return post_form(this, 'editusertext')")
-        input(type='hidden', name='thing_id', value='t5_2s3qj')
+      form.usertext(action='#', onsubmit="return post_form(this, 'editusertext')")
+        //-input(type='hidden', name='thing_id', value='t5_2s3qj')
         .usertext-body.may-blank-within.md-container
           .md
-            p
-              strong planetAWESOME 
+            h4
+              em planet AWESOME 
               |  is 
-              em a new decentralized sharing platform, 
-              | where you upvote with coins instead of votes. All submissions incl. URLs and tags are on the blockchain. 
+              em a new decentralized sharing and tipping platform, 
+              | where you upvote with coin tips instead of votes. All submissions incl. URLs and tags are on a secure and censorship-free blockchain. 
             p
-              | With planetAWESOME the users remain in power. There is no lock-in and there will be no ads, ever!
+              | With planet AWESOME the users remain in power. There is no lock-in and there will be no ads, ever!
+        .spacer
+        .usertext-body.may-blank-within.md-container
+          .md
+            h5
+              | If you have never owned a 
+              em crypto identity 
+              | before, 
+              strong planet and coin AWESOME 
+              | are the easiest and most fun way to do so!
+        .spacer
+        .usertext-body.may-blank-within.md-container
+          .md
             p 
               | Submit your 
               em best articles, videos or music 
               strong (any URL) 
-              | and earn CoinAwesome AWE coins from the community!
-            p
-              | If you have never owned a 
-              em cryptographical identity 
-              | before, 
-              strong planetAWESOME 
-              | is the easiest and most fun way to do so!
-              //- em be your own bank
-              | 
-            p
-              | If you are new to planetAWESOME,  
-              a(href='/#') install the CoinAwesome wallet, 
-              | check  
-              a(href='https://www.weusecoins.com/en/') our giveaways 
-              |  and 
-              a(href='https://www.youtube.com/watch?v=jMHM5-u2HgU&list=PLTgP-ifJBOvckT7t_v__qGKBkaja7TJaF') start submitting [YouTube]! 
-              | If your content got tipped, 
-              a(href='https://medium.com/@MrAwesome/a-decentralized-tip-jar-for-every-website-wetipcoins-detrust-c2bcc43ec25c') learn how to collect your tip.
+              | and earn 
+              em 
+                a(href='http://info.coinawesome.com') coin AWESOME (short AWE) 
+              | from the community!
+            p AWE are like Bitcoin BTC units. Just that they are distributed for free at the beginning. They are environmentaly-friendly, no mining required! They are the tipping currency for the web. Check our 
+              a(href='https://giveaway.coinawesome.com/') free giveaways!
+        .spacer
+        .usertext-body.may-blank-within.md-container
+          .md
             p 
-              em Get involved now! 
-              | As soon as we get enough traction we will also support real Bitcoin BTC tips.
+              h3 Join us and earn AWE! 
+              ol 
+                li
+                  a(href='https://chrome.google.com/webstore/detail/coinawesome-wallet-coins/gkabgklaefijlojbcphnpdkmjlibdoed') install the AWE wallet, 
+                li 
+                  | check  
+                  a(href='https://giveaway.coinawesome.com/') our giveaways and referral program
+                li
+                  a(href='https://www.youtube.com/watch?v=jMHM5-u2HgU&list=PLTgP-ifJBOvckT7t_v__qGKBkaja7TJaF') start submitting 
+                  | [VIDEO]! 
+                li 
+                  | In case your content got tipped, 
+                  a(href='https://medium.com/@MrAwesome/a-decentralized-tip-jar-for-every-website-wetipcoins-detrust-c2bcc43ec25c') learn how to collect your tip.
+              | As soon as we get enough traction we will support Bitcoin BTC tips, too.
 
               //- | . You can also explore the 
               //- a(href='http://bitcoin.it') CoinAwesome Wiki
               //- | :
-            //- out
+            //-out
               ul
                 li
                   a(href='https://bitcoin.org/en/getting-started') Getting Started
@@ -350,10 +365,10 @@
                 | We previously collected donations to fund CoinAwesome advertising efforts, but we no longer accept donations. The 
                 a(href='http://blockexplorer.com/q/getreceivedbyaddress/16KaCJB7fVuT6hvA7wzgzVjAnHz28bNvvh') funds already donated
                 |  will be spent on some sort of advertising, as intended. (10.35799117 BTC spent so far.)
-      .bottom
+      //-.bottom
         | created by 
-        span.author [deleted]
-        span.age
+        span.author MrAwesome
+        //-span.age
           | a community for 
           time(title='Thu Sep 9 14:30:26 2010 UTC', datetime='2010-09-09T07:30:26-07:00') 4 years
       .clear
