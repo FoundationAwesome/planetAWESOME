@@ -3,6 +3,7 @@ router = express.Router()
 _ = require 'lodash'
 color = require 'colors'
 timeago = require 'timeago'
+bitcore = require 'bitcore'
 
 dbAwesome = require '../scanScripts/scanDB.iced'
 
@@ -81,6 +82,9 @@ buildTipMap = () ->
 					# console.log url, tx.data.tags
 					txStubs.tagsList = _.union txStubs.tagsList, tx.data.tags
 					# console.log url, txStubs.tagsList
+				# TODO put into db object creation
+				preHash = new Buffer(tx.data.from);
+				tx.data.fromHash = bitcore.crypto.Hash.sha256(preHash).toString('hex')
 
 		# for tx in txStubs.txList
 
@@ -215,21 +219,7 @@ router.get '/tags', (req, res) ->
 	res.render 'tags', { tags: tagsSorted } 
 	return
 
-router.get '/', (req, res) ->
-	page = parseInt req.query.page
-	unless page
-		page = 0
 
-	await getTipMap '', defer e, tipMap
-	tipMap = _.sortBy(tipMap, 'timeSubm').reverse()
-
-	console.log 'total TIPS'.rainbow.bold, _.keys(tipMap).length
-
-	await pageItems tipMap, req, defer tipMapPaged
-
-	await getTags '', defer et, tagsSorted
-	res.render 'reddit', {tips: tipMapPaged, tags: tagsSorted, pageType: 'new', pageNum: page} 
-	return
 
 router.get '/best', (req, res) ->
 	page = parseInt req.query.page
@@ -307,7 +297,38 @@ router.get '/url/:url?', (req, res) ->
 	return
 
 
+router.get '/*', (req, res) ->
+	page = parseInt req.query.page
+	unless page
+		page = 0
 
+	await getTipMap '', defer e, tipMap
+	tipMap = _.sortBy(tipMap, 'timeSubm').reverse()
+
+	console.log 'total TIPS'.rainbow.bold, _.keys(tipMap).length
+
+	await pageItems tipMap, req, defer tipMapPaged
+
+	await getTags '', defer et, tagsSorted
+	res.render 'reddit', {tips: tipMapPaged, tags: tagsSorted, pageType: 'new', pageNum: page} 
+	return
+
+router.get '/*/*', (req, res) ->
+	# SAME LIKE ABOVE
+	page = parseInt req.query.page
+	unless page
+		page = 0
+
+	await getTipMap '', defer e, tipMap
+	tipMap = _.sortBy(tipMap, 'timeSubm').reverse()
+
+	console.log 'total TIPS'.rainbow.bold, _.keys(tipMap).length
+
+	await pageItems tipMap, req, defer tipMapPaged
+
+	await getTags '', defer et, tagsSorted
+	res.render 'reddit', {tips: tipMapPaged, tags: tagsSorted, pageType: 'new', pageNum: page} 
+	return
 
 
 # refreshCache = () ->

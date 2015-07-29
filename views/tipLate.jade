@@ -1,4 +1,6 @@
 .thing.even.link.self(onclick='')
+  a(class='identicon', href='http://api.coinawesome.com/address/#{tip.txList[0].data.from}',title='#{tip.txList[0].data.from}')
+    canvas( width="50", height="50", data-jdenticon-hash="#{tip.txList[0].data.fromHash}")
   p.parent
   span.rank 
     a(title='sum of all AWE units tipped') #{tip.totalAWE} 
@@ -64,6 +66,7 @@
         a.post-sharing-button(href='javascript: void 0;') share
     //p
     //| #{tip.urlData.meta.description}
+
     //-.expando(style='display: none')
       span.error loading...
   .child
