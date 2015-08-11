@@ -55,6 +55,10 @@ BLOCKHASH14k = '37116dc7e27803a485fad0204a93657286d4c4f1bef7712608217586e01f3f18
 BLOCKHASH15k = 'c5cf787c9a65b10acea556ba7da8a739d1e38b201870463f39aaeaee8fa208be'
 BLOCKHASH16k = '98529cb4d4e2c395c00058292ea241ab854386dcc1fd435f9019dbc6c801f240'
 
+BLOCKHASH18862 = '7a06728f19f94d804bfd998e3ef8eec683dde45b70cf658491bc32b02165f8c4'
+
+BLOCKNUMSTART = BLOCKHASH18862
+
 # await client.cmd 'gettransaction', '83de7bea1bc0f7a4e16678f33c1b77772444938a709d1100803acef4b443eb8f', defer err, inputTx, resHeaders
 # console.log 'INPuuuuuuUT TX', inputTx, err, resHeaders
 
@@ -233,6 +237,7 @@ getBlockRec = (hash) ->
 	for txhash in block.tx
 		await client.cmd 'gettransaction', txhash, defer err, tx, resHeaders
 		if (err) 
+			getBlockRec block.previousblockhash
 			return console.log(err)
 		#console.log tx
 		#console.log tx.vout
@@ -256,13 +261,13 @@ getBlockRec = (hash) ->
 
 
 sync = () ->
-	# console.log "SYNCING WITH CHAIN NOW".bold.rainbow
+	console.log "SYNCING WITH CHAIN NOW".bold.rainbow
 	await db.flat.get 'lastBlockHash', defer e, hash
 	unless e 
 		console.log 'last synced block was', hash, new Date()
 		getBlockRec hash
 	else 
-		getBlockRec BLOCKHASH16k #FIRSTBLOCKHASH
+		getBlockRec BLOCKNUMSTART 
 
 
 setInterval(sync, 30000)
