@@ -297,7 +297,7 @@ router.get '/url/:url?', (req, res) ->
 	return
 
 
-router.get '/*', (req, res) ->
+router.get '/', (req, res) ->
 	page = parseInt req.query.page
 	unless page
 		page = 0

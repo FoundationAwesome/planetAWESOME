@@ -39,6 +39,7 @@
     "request": "^2.55.0",
     "serve-favicon": "~2.2.0",
     "timeago": "^0.2.0",
-    "bitcoin": "~2.4.0"
+    "bitcoin": "~2.4.0",
+    "less": "~2.5.1"
   }
 }
