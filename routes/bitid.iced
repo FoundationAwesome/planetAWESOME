@@ -7,7 +7,7 @@ logger = require('morgan')
 bodyParser = require('body-parser')
 # partials = require('express-partials')
 Bitid = require('bitid')
-db = require('../bitid/memdb')
+db = require('../bitID/memdb')
 
 router = express.Router()
 
