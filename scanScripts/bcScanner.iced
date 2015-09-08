@@ -7,6 +7,11 @@ config = require './BCScanConfig'
 
 
 db = require '../scanScripts/scanDB.iced'
+
+APIKEY1 = '661bdc5d11b42cede92384'
+APIKEY2 = 'b481ce4fc29b314949002a'
+
+APIKEY = APIKEY2
 # iframelyDB = require '../scanScripts/iframelyDB.iced'
 
 # await db.iframely.getValues 'iframely', defer e, resp
@@ -57,7 +62,10 @@ BLOCKHASH16k = '98529cb4d4e2c395c00058292ea241ab854386dcc1fd435f9019dbc6c801f240
 
 BLOCKHASH18862 = '7a06728f19f94d804bfd998e3ef8eec683dde45b70cf658491bc32b02165f8c4'
 
-BLOCKNUMSTART = BLOCKHASH18862
+BLOCKHASH20400 = 'a0709f84f8aa28b108ae65d5ff3d3b97bbc01b6da85f628a9fe39bb78de12632'
+BLOCKHASH20397 = '73af71d3eb282a170b68d68369a0171397ee3d1ea0955dc259b3f1d39fd8b54c'
+
+BLOCKNUMSTART = BLOCKHASH20397
 
 # await client.cmd 'gettransaction', '83de7bea1bc0f7a4e16678f33c1b77772444938a709d1100803acef4b443eb8f', defer err, inputTx, resHeaders
 # console.log 'INPuuuuuuUT TX', inputTx, err, resHeaders
@@ -177,16 +185,33 @@ processNullDataOut = (tx) ->
 			# console.log db.iframely
 			if e  # does not exist in local db
 				console.log 'fetching data from iframely API...'
-				await request 'http://iframe.ly/api/iframely?url=' + url + '&api_key=661bdc5d11b42cede92384', defer error, response, body
+				await request 'http://iframe.ly/api/iframely?url=' + url + '&api_key='+APIKEY, defer error, response, body
 				unless error and response.statusCode is 200
 					rJSON = JSON.parse body
 					console.log 'DATA is [ifrml]',rJSON
-					await db.iframely.put 'iframely-'+url, rJSON, defer e
-					console.log e if e
+					if rJSON.status isnt 403
+						await db.iframely.put 'iframely-'+url, rJSON, defer e
+						console.log e if e
+					else 
+						console.log "API LIMIT REACHED!"
+						if APIKEY is APIKEY2
+							APIKEY = APIKEY1
+						else
+							APIKEY = APIKEY2
 				else 
 					console.log 'ERROR iframely'.red.bold, error, response.statusCode
 			else 
 				console.log 'CACHED'.rainbow.bold, r
+				if r.status is 403
+					console.log 'fetching data from iframely API...'
+					await request 'http://iframe.ly/api/iframely?url=' + url + '&api_key='+APIKEY, defer error, response, body
+					unless error and response.statusCode is 200
+						rJSON = JSON.parse body
+						console.log 'DATA is [ifrml]',rJSON
+						await db.iframely.put 'iframely-'+url, rJSON, defer e
+						console.log e if e
+					else 
+						console.log 'ERROR iframely'.red.bold, error, response.statusCode
 
 
 
@@ -270,10 +295,13 @@ sync = () ->
 		getBlockRec BLOCKNUMSTART 
 
 
-setInterval(sync, 30000)
-##
-
-sync()
+STARTBLOCK = process.argv[2]
+if STARTBLOCK
+	getBlockRec STARTBLOCK
+else
+	setInterval(sync, 30000)
+	##
+	sync()
 
 
 #######################
