@@ -221,6 +221,13 @@ router.get '/tags', (req, res) ->
 
 
 
+router.get '/wallet', (req, res) ->
+	res.render 'wallet'
+
+router.get '/walletFrame', (req, res) ->
+	res.render 'walletFrame'
+
+
 router.get '/best', (req, res) ->
 	page = parseInt req.query.page
 	unless page

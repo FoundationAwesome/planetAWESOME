@@ -73,6 +73,11 @@
       //-   a.choice(href='http://www.reddit.com/r/CoinAwesome/ads/') promoted
   #header-bottom-right
     span.user
+      | Get some AWESOME coins now and start posting using the  
+      strong miniWallet 
+      | or the 
+      a.login-required(href='https://chrome.google.com/webstore/detail/coinawesome-wallet-coins/gkabgklaefijlojbcphnpdkmjlibdoed?authuser=0') browser extension
+    //-span.user
       | want to join? 
       a.login-required(href='https://chrome.google.com/webstore/detail/coinawesome-wallet-coins/gkabgklaefijlojbcphnpdkmjlibdoed?authuser=0') install the CoinAwesome wallet and start submitting 
       |  in seconds | 
@@ -168,7 +173,12 @@
       //- p.users-online(title='logged-in users viewing this subreddit in the past 15 minutes')
       //-   span.number 743
       //-   span.word users here now
-      form.usertext(action='#', onsubmit="return post_form(this, 'editusertext')")
+      iframe(src='https://planetawesome.org/walletFrame' width="300" height="360" scrolling="no" frameborder="0" allowtransparency="true" title="CoinAwesome Button" style=' overflow:hidden; border:0px; scrolling:no')
+      //- iframe(src='http://localhost:3000/walletFrame' width="300" height="360" scrolling="no" frameborder="0" allowtransparency="true" title="CoinAwesome Button" style=' overflow:hidden; border:0px; scrolling:no')
+      form.usertext(action='#', onsubmit="")
+        .usertext-body.may-blank-within.md-container
+          .md
+      form.usertext(action='#', onsubmit="")
         //-input(type='hidden', name='thing_id', value='t5_2s3qj')
         .usertext-body.may-blank-within.md-container
           .md

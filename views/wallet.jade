@@ -1,0 +1,1239 @@
+doctype html
+html
+  //include rhead
+  head
+    //meta(http-equiv='content-type', content='text/html;charset=utf-8')
+    //meta(name='keywords', content='bitcoin, coinawesome, wallet, multisig, multisignature, address, browser, javascript, js, broadcast, transaction, verify, decode')
+    //meta(name='description', content='A CoinAwesome AWE Wallet written in Javascript. Supports Multisig, Custom Transactions, nLockTime and more!')
+    //meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    //meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/wallet/css/bootstrap.min.css', media='screen')
+    link(rel='stylesheet', href='/wallet/css/style.css', media='screen')
+    script(type='text/javascript', src='/wallet/js/jquery-1.9.1.min.js')
+    script(type='text/javascript', src='/wallet/js/bootstrap.min.js')
+    script(type='text/javascript', src='/wallet/js/crypto-min.js')
+    script(type='text/javascript', src='/wallet/js/crypto-sha256.js')
+    script(type='text/javascript', src='/wallet/js/crypto-sha256-hmac.js')
+    script(type='text/javascript', src='/wallet/js/sha512.js')
+    script(type='text/javascript', src='/wallet/js/ripemd160.js')
+    script(type='text/javascript', src='/wallet/js/aes.js')
+    script(type='text/javascript', src='/wallet/js/qrcode.js')
+    script(type='text/javascript', src='/wallet/js/qcode-decoder.min.js')
+    script(type='text/javascript', src='/wallet/js/jsbn.js')
+    script(type='text/javascript', src='/wallet/js/ellipticcurve.js')
+    script(type='text/javascript', src='/wallet/js/bitcore.min.js')
+    script(type='text/javascript', src='/wallet/js/coin.js')
+    script(type='text/javascript', src='/wallet/js/coinbin.js')
+
+  //body.listing-page.hot-page
+    //include bodyStart
+
+    //a(name='content')
+    //.content(role='main')
+ 
+  body
+    #wrap
+      // Fixed navbar
+      #header.navbar.navbar-default(role='navigation')
+        .container
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a#homeBtn.navbar-brand(href='#home')
+              img(src='/images/coinAwesomeBW50.png', style='height:25px;margin-top:-5px')
+          .collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  span.glyphicon.glyphicon-plus
+                  |  New
+                  b.caret
+                ul.dropdown-menu
+                  li
+                    a(href='#newAddress', data-toggle='tab') New Address
+                  //-li
+                    a(href='#newMultiSig', data-toggle='tab') MultiSig Address
+                  //-li
+                    a(href='#newHDaddress', data-toggle='tab') HD Address
+                  //-li.divider
+                  li
+                    a(href='#newTransaction', data-toggle='tab') New Transaction
+              //-li
+                a(href='#verify', data-toggle='tab')
+                  span.glyphicon.glyphicon-ok
+                  |  Verify
+              //-li
+                a(href='#sign', data-toggle='tab')
+                  span.glyphicon.glyphicon-pencil
+                  |  Sign
+              //-li
+                a(href='#broadcast', data-toggle='tab')
+                  span.glyphicon.glyphicon-globe
+                  |  Broadcast
+              li
+                a(href='#wallet', data-toggle='tab')
+                  span.glyphicon.glyphicon-briefcase
+                  |  Wallet
+              li
+                a(href='#about', data-toggle='tab')
+                  span.glyphicon.glyphicon-info-sign
+                  |  About
+              li.hidden
+                a(href='#settings', data-toggle='tab')
+                  span.glyphicon.glyphicon-cog
+                  |  Settings
+
+      #content.container
+        noscript.alert.alert-danger.center-block
+          span.glyphicon.glyphicon-exclamation-sign
+          |  This page uses javascript, please enable it to continue!
+        .tab-content
+          #home.tab-pane.tab-content.active
+            .row
+              .col-md-12
+                h2
+                  | CoinAWE 
+                  small Welcome to the Blockchain
+            .jumbotron
+              h1 CoinAwesome. It&apos;s your money!
+              p Be your own bank, take control of your own money and start using CoinAwesome today!
+              p
+                a.btn.btn-primary.btn-lg(href='#about', role='button') Learn more &raquo;
+            hr
+            .row
+              .col-md-4
+                h3
+                  span.glyphicon.glyphicon-ok
+                  |  Open Source
+                p
+                  | This CoinAwesome AWE wallet is an open source web based wallet written in javascript and released under the 
+                  a(href='LICENSE') MIT license
+                  |  which means its free to use and edit.
+              //-.col-md-4
+                h3
+                  span.glyphicon.glyphicon-fullscreen
+                  |  MultiSig
+                p
+                  | We offer a fully transparent 
+                  a(href='#newMultiSig') multisig
+                  |  solution which works seamlessly offline and with other bitcoin clients.
+              //-.col-md-4
+                h3
+                  span.glyphicon.glyphicon-bitcoin
+                  |  Raw Transactions
+                p
+                  a(href='#newTransaction') Create
+                  | , 
+                  a(href='#verify') verify
+                  | , 
+                  a(href='#sign') sign
+                  |  and 
+                  a(href='#broadcast') broadcast
+                  |  custom raw transactions online with advanced features and minimal effort!
+            .row
+              .col-md-4
+                h3
+                  span.glyphicon.glyphicon-piggy-bank
+                  |  Wallet
+                p
+                  | Quick access to an 
+                  a(href='#wallet') online wallet
+                  |  where only you have access to your own private keys!
+              .col-md-4
+                h3
+                  span.glyphicon.glyphicon-globe
+                  |  Addresses
+                p
+                  | We support 
+                  a(href='#newAddress') regular addresses
+                  //-|  but also 
+                  //-a(href='#newMultiSig') multisig
+                  //-|  and stealth, and access to your own private keys!
+              //-.col-md-4
+                h3
+                  span.glyphicon.glyphicon-wrench
+                  |   Development
+                p
+                  | Use what we&apos;ve built to write your own projects! See our documention (coming soon), or contribute at 
+                  a(href='https://github.com/OutCast3k/coinbin/') github
+                  | .
+          #wallet.tab-pane.tab-content
+            .row
+              .col-md-12
+                h2
+                  | Open Wallet 
+                  small  browser based AWESOME wallet
+                #openLogin
+                  form.form-signin(role='form', action='javascript:;')
+                    p Use the form below to open a wallet and begin using this service.
+                    .alert.alert-warning
+                      b Notice
+                      | : Different email address and password combination will open different wallets, be careful when entering your details as lost accounts can not be recovered!
+                    input#openEmail.form-control(type='email', placeholder='Email address', required='', autofocus='')
+                    input#openPass.form-control(type='password', placeholder='Password', required='')
+                    input#openPassConfirm.form-control(type='password', placeholder='Password confirm', required='')
+                    br
+                    #openLoginStatus.alert.alert-danger.hidden
+                    button#openBtn.btn.btn-primary(type='submit') Submit
+                #openWallet.hidden
+                  .row
+                    .col-md-12
+                      p
+                        span(style='float:right;')
+                          a#walletLogout(href='javascript:;')
+                            span.glyphicon.glyphicon-log-out
+                            |  Logout
+                        | Welcome to your wallet, enjoy your stay!
+                    .col-md-12(align='center')
+                      #walletQrCode.hidden
+                      br
+                      div
+                        | This is your address. Use it to send some AWE coins to this wallet.
+                        span#walletLoader.hidden
+                          img(src='images/loader.gif')
+                        div
+                          strong#walletAddress
+                      br
+                      div(style='text-align:center; width:350px;')
+                        ul.nav.nav-pills(role='tablist')
+                          li.active(role='presentation')
+                            a#walletBalance(href='javascript:;') 0.00 BTC
+                          li(role='presentation')
+                            a#walletShowSpend(href='javascript:;') Spend
+                          li(role='presentation')
+                            a#walletHistory(href='javascript:;', target='_blank') History
+                          li(role='presentation')
+                            a#walletShowKeys(href='javascript:;') Keys
+                        br
+                        #walletKeys.hidden
+                          label Public Key
+                          input.form-control.pubkey(type='text', readonly='')
+                          label Private key
+                          .input-group
+                            input.form-control.privkey(type='password', readonly='')
+                            span.input-group-btn
+                              button.showKey.btn.btn-default(type='button') Show
+                          label Private Key (AES256 encrypted key)
+                          input.form-control.privkeyaes(type='text', readonly='')
+                        #walletSpend.hidden
+                          .row
+                            .form-inline.output
+                              .col-xs-9
+                                label Address
+                              .col-xs-3
+                                label Amount
+                          #walletSpendTo.row
+                            .form-horizontal.output
+                              .col-xs-9
+                                input.form-control.addressTo(type='text', data-original-title='', title='')
+                              .col-xs-3
+                                input.form-control.amount(type='text', data-original-title='', title='', value='1')
+                              a.addressAdd(href='javascript:;').hidden
+                                span.glyphicon.glyphicon-plus
+                              br
+                              br
+                          br
+                          br
+                          .row
+                            .form-inline.output
+                              .col-xs-9
+                                label
+                                  abbr(title='The URL you want to share:') URL to share on PlanetAwesome.org
+                              .col-xs-3
+                                label Amount
+                          .row
+                            .form-horizontal.output
+                              .col-xs-9
+                                input#urlShare.form-control(type='text', placeholder='http://coinawesome.com')
+                              .col-xs-3
+                                input#urlAmount.form-control(type='text', value='1')
+                          .row.hidden
+                            .col-xs-6
+                              label
+                                abbr(title='the amount to pay in network miner fees - 0.1 or more recommended') Transaction Fee
+                              input#txFee.form-control(type='text', value='0.1')
+                            .col-xs-5
+                              label
+                                abbr(title='nothing here yet') Donation
+                              input#developerDonation.form-control(type='text', value='0')
+                          br
+                          #walletSendStatus.alert.alert-danger.hidden
+                          button#walletSendBtn.btn.btn-primary(type='button') Send
+                          button.btn.btn-default(type='button') Reset
+          #newAddress.tab-pane.tab-content
+            h2
+              | New Address 
+              small create a new address
+            p
+              | Any keys used you will need to manually store safely as they will be needed later to redeem the bitcoins.
+            label Address (Share)
+            .input-group
+              input#newBitcoinAddress.form-control.address(type='text', value='', readonly='')
+              span.input-group-btn
+                button.qrcodeBtn.btn.btn-default(type='button', data-toggle='modal', data-target='#modalQrcode')
+                  span.glyphicon.glyphicon-qrcode
+            label Public key (Share)
+            input#newPubKey.form-control(type='text', readonly='')
+            label Private key (WIF key)
+            .input-group
+              input#newPrivKey.form-control(type='password', value='', readonly='')
+              | 
+              span.input-group-btn
+                button.showKey.btn.btn-default(type='button') Show
+            | 
+            #aes256wifkey.hidden
+              label AES-256 Encrypted WIF key
+              | 
+              input#newPrivKeyEnc.form-control(type='text', value='', readonly='')
+            | 
+            h3 Address Options
+            | 
+            p
+              | You can use the advanced options below to generate different kind of keys and addresses.
+            | 
+            .checkbox
+              label
+                input#newCompressed.checkbox-inline(type='checkbox', checked='')
+                |  Compress 
+                span.text-muted (recommended)
+            | 
+            .checkbox
+              label
+                input#newBrainwallet.checkbox-inline(type='checkbox')
+                |  Custom Seed or Brain Wallet
+              | 
+              input#brainwallet.form-control.hidden(type='text')
+            | 
+            .checkbox
+              label
+                input#encryptKey.checkbox-inline(type='checkbox')
+                |  Encrypt Private Key with AES-256 Password
+              | 
+              #aes256passform.row.hidden
+                .col-md-6
+                  input#aes256pass.form-control(type='password', placeholder='Password')
+                | 
+                .col-md-6
+                  input#aes256pass_confirm.form-control(type='password', placeholder='Confirm Password')
+              | 
+              #aes256passStatus.row.hidden
+                .col-md-12
+                  br
+                  | 
+                  .alert.alert-danger
+                    span.glyphicon.glyphicon-exclamation-sign
+                    |  Your passwords do not match, please try again!
+            | 
+            input#newKeysBtn.btn.btn-primary(type='button', value='Generate')
+            | 
+            br
+          | 
+          //-#newMultiSig.tab-pane.tab-content
+            h2
+              | New Multisig Address 
+              small Secure multisig address
+            | 
+            .row
+              .col-md-8
+                p
+                  | Public keys can be 
+                  a(href='#newAddress') generated in your browser
+                  |  or from your bitcoin client.
+                | 
+                p
+                  | Enter the public keys of all the participants, to create a 
+                  a(href='https://en.bitcoin.it/wiki/Address#Multi-signature_addresses', target='_blank') multi signature address
+                  | . Maximum of 15 allowed. Compressed and uncompressed public keys are accepted.
+              | 
+              .col-md-3
+                p.alert.alert-info
+                  span.glyphicon.glyphicon-info-sign
+                  |  
+                  a(href='javascript:;', data-toggle='modal', data-target='#modalMediator')
+                    abbr Need a Mediator?
+              | 
+              .col-md-1
+            | 
+            #multisigPubKeys.row
+              .form-horizontal
+                .col-xs-11
+                  input.form-control.pubkey(type='text')
+                | 
+                a.pubkeyAdd(href='javascript:;')
+                  span.glyphicon.glyphicon-plus
+                | 
+                br
+                br
+            | 
+            p Enter the amount of signatures required to release the coins
+            | 
+            .row
+              .col-xs-3
+                select#releaseCoins.form-control
+                  option 1
+                  | 
+                  option(selected='') 2
+                  | 
+                  option 3
+                  | 
+                  option 4
+                  | 
+                  option 5
+                  | 
+                  option 6
+                  | 
+                  option 7
+                  | 
+                  option 8
+                  | 
+                  option 9
+                  | 
+                  option 10
+                  | 
+                  option 11
+                  | 
+                  option 12
+                  | 
+                  option 13
+                  | 
+                  option 14
+                  | 
+                  option 15
+            | 
+            br
+            | 
+            #multiSigErrorMsg.alert.alert-danger(style='display:none;')
+            | 
+            #multiSigData.alert.alert-success.hidden
+              label Address
+              | 
+              p Payment should be made to this address:
+              | 
+              .row
+                .col-lg-6
+                  .input-group
+                    input.form-control.address(type='text', value='', readonly='')
+                    | 
+                    span.input-group-btn
+                      button.qrcodeBtn.btn.btn-default(type='button', data-toggle='modal', data-target='#modalQrcode')
+                        span.glyphicon.glyphicon-qrcode
+              | 
+              label Redeem Script
+              | 
+              p
+                | This script should be 
+                i saved and should be shared with all the participants before a payment is made
+                | , so they may validate the authenticity of the address, it will also be used later to release the bitcoins.
+              | 
+              textarea.form-control.script(style='height:160px', readonly='')
+              | 
+              label Shareable URL
+              | 
+              input.scriptUrl.form-control(type='text', disabled='')
+            | 
+            input#newMultiSigAddress.btn.btn-primary(type='button', value='Submit')
+            | 
+            br
+          | 
+          //-#newHDaddress.tab-pane.tab-content
+            h2
+              | New HD Address 
+              small making bip32 even easier
+            | 
+            p
+              | Use the form below to generate a 
+              i master
+              |  hierarchical deterministic address.
+            | 
+            label xPub Address
+            | 
+            .input-group
+              input#newHDxpub.form-control(type='text', value='', readonly='')
+              | 
+              span.input-group-btn
+                button.deriveHDbtn.btn.btn-default(type='button')
+                  span.glyphicon.glyphicon-chevron-right(title='Derive from key')
+            | 
+            label xPrv Address
+            | 
+            .input-group
+              input#newHDxprv.form-control(type='text', value='', readonly='')
+              | 
+              span.input-group-btn
+                button.deriveHDbtn.btn.btn-default(type='button')
+                  span.glyphicon.glyphicon-chevron-right(title='Derive from key')
+            | 
+            h3 Address Options
+            | 
+            p
+              | You can use the advanced options below to generate different kinds of master addresses.
+            | 
+            | 
+            .checkbox
+              label
+                input#newHDBrainwallet.checkbox-inline(type='checkbox')
+                |  Custom Seed or Brain Wallet
+              | 
+              input#HDBrainwallet.form-control.hidden(type='text')
+            | 
+            input#newHDKeysBtn.btn.btn-primary(type='button', value='Generate')
+          | 
+          #newTransaction.tab-pane.tab-content
+            h2
+              | Transaction 
+              small Create a new transaction
+            p Use this page to create a raw transaction
+            b Address, WIF key or Multisig Redeem Script
+            | :
+            .input-group
+              span.input-group-btn
+                button.btn.btn-info.qrcodeScanner(type='button', data-toggle='modal', data-target='#modalQrcodeScanner', forward-result='#redeemFrom')
+                  span.glyphicon.glyphicon-camera
+              input#redeemFrom.form-control(type='text', value='')
+              span.input-group-btn
+                button#redeemFromBtn.btn.btn-info(type='button') Load
+            br
+            #redeemFromStatus.hidden.alert.alert-danger
+            #redeemFromAddress.hidden.alert.alert-info
+            div
+              a#optionsCollapse(href='javascript:;')
+                .well.well-sm
+                  span#glyphcollapse.glyphicon.glyphicon-collapse-down
+                  |  Advanced Options
+              #optionsAdvanced.hidden
+                label Clear Inputs
+                p.checkbox
+                  label
+                    input#clearInputsOnLoad.checkbox-inline(type='checkbox', checked='')
+                    |  Clear existing inputs when new inputs are loaded.
+                hr
+                label Null Data
+                span.text-muted.text-normal
+                  | (256 byte limit)
+                p.checkbox
+                  label
+                    input#opReturn.checkbox-inline(type='checkbox')
+                    |  Allow data to be sent within the transaction and stored in the blockchain by using 
+                    a(href='https://bitcoin.org/en/developer-guide#null-data', target='_') OP_RETURN
+                    | .
+                  .text-muted
+                    | When using this option you may enter a hex string or address into the address field on the output tab.
+                hr
+                label Lock Time
+                p
+                  | The 
+                  a(href='https://bitcoin.org/en/developer-guide#locktime-and-sequence-number') locktime
+                  |  indicates the earliest time a transaction can be added to the block chain.
+                input#nLockTime.form-control(type='text', value='0')
+                hr
+                label Network
+                p
+                  | The 
+                  a(href='#settings') settings
+                  |  page can be used to select alternative networks of which you can retrieve your unspent outputs and broadcast a signed transaction into.
+                hr
+            ul#putTabs.nav.nav-tabs
+              li.active
+                a(href='#txoutputs', data-toggle='tab')
+                  | Outputs 
+                  small
+                    | (
+                    span#totalOutput 0.00000000
+                    | )
+              li
+                a(href='#txinputs', data-toggle='tab')
+                  | Inputs 
+                  small
+                    | (
+                    span#totalInput 0.00000000
+                    | )
+            br
+            .tab-content
+              #txoutputs.tab-pane.fade.in.active
+                p Enter the address and amount you wish to make a payment to.
+                .row
+                  .col-xs-8
+                    label
+                      abbr(title='Address to send to') Address
+                  .col-xs-3
+                    label
+                      abbr(title='Amount to send') Amount
+                  .col-xs-1
+                #recipients
+                  .row.recipient
+                    .col-xs-8
+                      input.form-control.address(type='text', placeholder='1')
+                    .col-xs-3
+                      input.form-control.amount(type='text', placeholder='0.00')
+                    .col-xs-1
+                      a.addressAddTo(href='javascript:;')
+                        span.glyphicon.glyphicon-plus
+              #txinputs.tab-pane.fade
+                p Enter the details of inputs you wish to spend.
+                | 
+                .row
+                  .col-xs-5
+                    label
+                      abbr(title='Transaction ID') Transaction ID:
+                  | 
+                  .col-xs-1
+                    label
+                      abbr(title='Transaction Input Number') N
+                  | 
+                  .col-xs-3
+                    label Script
+                  | 
+                  .col-xs-2
+                    label
+                      abbr(title='This field is for accounting purposes only - the entire input will be spent!') Amount
+                  | 
+                  .col-xs-1
+                | 
+                #inputs
+                  .row.inputs
+                    .col-xs-5
+                      input.form-control.txId(type='text', placeholder='')
+                    | 
+                    .col-xs-1
+                      input.form-control.txIdN(type='text', placeholder='0')
+                    | 
+                    .col-xs-3
+                      input.form-control.txIdScript(type='text')
+                    | 
+                    .col-xs-2
+                      input.form-control.txIdAmount(type='text', placeholder='0.00')
+                    | 
+                    .col-xs-1
+                      a.txidAdd(href='javascript:;')
+                        span.glyphicon.glyphicon-plus
+                      | 
+                      a.txidClear(href='javascript:;')
+                        span.glyphicon.glyphicon-minus
+            | 
+            br
+            | 
+            .row
+              .col-xs-3
+                label
+                  abbr(title='What is not spent will be used as a transaction fee') Transaction Fee
+                | 
+                input#transactionFee.form-control(type='text', value='0.0000', readonly='')
+            | 
+            br
+            | 
+            #transactionCreateStatus.alert.alert-danger.hidden
+            | 
+            #transactionCreate.alert.alert-success.hidden
+              label Transaction
+              | 
+              button.qrcodeBtn.btn.btn-default(type='button', data-toggle='modal', data-target='#modalQrcode', style='float:right;')
+                span.glyphicon.glyphicon-qrcode
+              | 
+              p
+                | The transaction below has been generated and encoded. It can be broadcasted once it has been signed.
+              | 
+              br
+              |                                 
+              textarea.form-control(style='height:150px', readonly='')
+              | 
+              p.text-muted
+                | Size: 
+                span.txSize 0
+                |  
+                i bytes
+            | 
+            input#transactionBtn.btn.btn-primary(type='button', value='Submit')
+            | 
+            br
+          //-#verify.tab-pane.tab-content
+            h2
+              | Verify 
+              small transactions and other scripts
+            | 
+            .row
+              .col-md-12
+                p
+                  | Enter the raw transaction, redeem script, pubkey, hd address or wif key to convert it into a readable format that can be verified manually.
+                | 
+                textarea#verifyScript.form-control(type='text', style='height:125px')
+            | 
+            br
+            | 
+            #verifyRsData.hidden.verifyData
+              h4 Redeem Script
+              | 
+              p
+                span(style='float:right')
+                  a.verifyLink(href='javascript:;', target='_blank', title='Link to this page')
+                    span.glyphicon.glyphicon-link
+                | The above redeem script has been decoded
+              | 
+              label Multi Signature Address
+              | 
+              .row
+                .col-lg-6
+                  .input-group
+                    input.form-control.address.multisigAddress(type='text', value='', readonly='')
+                    | 
+                    span.input-group-btn
+                      button.qrcodeBtn.btn.btn-default(type='button', data-toggle='modal', data-target='#modalQrcode')
+                        span.glyphicon.glyphicon-qrcode
+              | 
+              label Required Signatures
+              | 
+              p.signaturesRequired ?
+              | 
+              label Signatures Required from
+              | 
+              table.table.table-striped.table-hover
+                tbody
+            | 
+            #verifyTransactionData.hidden.verifyData
+              h4 Transaction Script
+              | 
+              p
+                span(style='float:right')
+                  a.verifyLink(href='', target='_blank', title='Link to this page')
+                    span.glyphicon.glyphicon-link
+                | The above script has been decoded
+              | 
+              div
+                b Version
+                | : 
+                span.transactionVersion
+              | 
+              div
+                b Transaction Size
+                | : 
+                span.transactionSize
+              | 
+              div
+                b Lock time
+                | : 
+                span.transactionLockTime
+              | 
+              hr
+              | 
+              label Inputs
+              | 
+              table.table.table-striped.table-hover.ins
+                thead
+                  tr(style='font-weight:bold;')
+                    td
+                      abbr(title='the transaction id') Txid
+                    td
+                      abbr(title='index id of the the transaction') N
+                    td
+                      abbr(title='transaction script') Script
+                    td
+                      abbr(title='is input signed?') Signed?
+                    td
+                      abbr(title='is transaction a multisig transaction?') MultiSig?
+                | 
+                tbody
+              | 
+              label Outputs
+              | 
+              table.table.table-striped.table-hover.outs
+                thead
+                  tr(style='font-weight:bold;')
+                    td
+                      abbr(title='address the funds are being sent to') Address
+                    td
+                      abbr(title='the amount the address is being sent') Amount
+                    td
+                      abbr(title='the script of the transaction') Script
+                | 
+                tbody
+            | 
+            #verifyPrivKey.hidden.verifyData
+              h4 WIF key
+              | 
+              p The above wif key has been decoded
+              | 
+              p
+                b Address
+                | : 
+                input.form-control.address(type='text', readonly='')
+              | 
+              p
+                b Public key
+                | : 
+                input.form-control.pubkey(type='text', readonly='')
+              | 
+              p
+                b Private key
+                | : 
+                input.form-control.privkey(type='text', readonly='')
+              | 
+              p
+                b Is compressed
+                | : 
+                span.iscompressed
+            | 
+            #verifyPubKey.hidden.verifyData
+              h4 Public key
+              | 
+              p
+                span(style='float:right')
+                  a.verifyLink(href='', target='_blank', title='Link to this page')
+                    span.glyphicon.glyphicon-link
+                | The above public key has been encoded to its address
+              | 
+              p
+                b Address
+                | : 
+                input.form-control.address(type='text', readonly='')
+            | 
+            #verifyHDaddress.hidden.verifyData
+              h4 HD Address
+              | 
+              p
+                span(style='float:right')
+                  a.verifyLink(href='', target='_blank', title='Link to this page')
+                    span.glyphicon.glyphicon-link
+                | The key 
+                small
+                  span.hdKey.hidden
+                |  has been decoded
+              | 
+              .row
+                .col-md-2
+                  b Type
+                  br
+                  | 
+                  span.key_type
+                | 
+                .col-md-5
+                  b Chain Code
+                  br
+                  | 
+                  input.form-control.chain_code(type='text', value='', readonly='')
+                | 
+                .col-md-5
+                  b Key
+                  br
+                  | 
+                  input.form-control.hdwifkey(type='text', value='', readonly='')
+              | 
+              .row
+                .col-md-3
+                  b Version
+                  br
+                  | 
+                  input.form-control.version(type='text', value='', readonly='')
+                | 
+                .col-md-3
+                  b Parent FingerPrint
+                  br
+                  | 
+                  input.form-control.parent_fingerprint(type='text', value='', readonly='')
+                | 
+                .col-md-3
+                  b Depth
+                  br
+                  | 
+                  input.form-control.depth(type='text', value='', readonly='')
+                | 
+                .col-md-3
+                  b Index
+                  br
+                  | 
+                  input.form-control.child_index(type='text', value='', readonly='')
+              | 
+              .row
+              | 
+              hr
+              | 
+              h4 Key Derivation
+              | 
+              p The path of key derivation
+              | 
+              .row
+                .col-md-8
+                  b Path
+                  br
+                  | 
+                  select.form-control
+                    option Simple: m/i
+                | 
+                .col-md-2
+                  b Index (Start)
+                  br
+                  | 
+                  input.form-control.derivation_index_start(type='text', value='0')
+                | 
+                .col-md-2
+                  b Index (End)
+                  br
+                  | 
+                  input.form-control.derivation_index_end(type='text', value='1')
+              | 
+              hr
+              | 
+              h4 Keys
+              | 
+              p Keys derived from the hd address provided
+              | 
+              .derived_data
+                table.table.table-striped.table-hover
+                  thead
+                    tr
+                      td
+                        b Index
+                      td
+                        b Address
+                      td
+                        b Private Key (WIF)
+                      td
+                        b Extended xPub
+                      td
+                        b Extended xPrv
+                  | 
+                  tbody
+              | 
+              br
+            | 
+            #verifyStatus.alert.alert-danger.hidden
+              span.glyphicon.glyphicon-exclamation-sign
+              |  Unable to decode
+            | 
+            input#verifyBtn.btn.btn-primary(type='button', value='Submit')
+            | 
+            br
+          //-#sign.tab-pane.tab-content
+            h2
+              | Sign Transaction 
+              small once a transaction has been verified
+            | 
+            p
+              | Once you have 
+              a(href='#verify') verified
+              |  a transaction you can sign and then 
+              a(href='#broadcast') broadcast
+              |  it into the network.
+            | 
+            .row
+              .col-md-12
+                label(for='signPrivateKey') Private key
+                | 
+                .input-group
+                  input#signPrivateKey.form-control(type='password', value='')
+                  | 
+                  span.input-group-btn
+                    button.showKey.btn.btn-default(type='button') Show
+            | 
+            br
+            | 
+            .row
+              .col-md-12
+                textarea#signTransaction.form-control(type='text', style='height:125px')
+            | 
+            br
+            | 
+            #signedDataError.alert.alert-danger.hidden
+              span.glyphicon.glyphicon-exclamation-sign
+              |  There is a problem with one or more of your inputs, please check and try again
+            | 
+            #signedData.alert.alert-success.hidden
+              label Signed transaction
+              | 
+              button.qrcodeBtn.btn.btn-default(type='button', data-toggle='modal', data-target='#modalQrcode', style='float:right;')
+                span.glyphicon.glyphicon-qrcode
+              | 
+              p The above transaction has been signed:
+              |                         
+              textarea.form-control.script(style='height:160px', readonly='')
+              |                                     
+              | 
+              p.text-muted
+                | Size: 
+                span.txSize 0
+                |  
+                i bytes
+            | 
+            input#signBtn.btn.btn-primary(type='button', value='Submit')
+            | 
+            br
+          //-#broadcast.tab-pane.tab-content
+            h2
+              | Broadcast Transaction 
+              small into the bitcoin network
+            | 
+            a(href='#settings', style='float:right;')
+              span.glyphicon.glyphicon-cog
+            | 
+            p Enter your hex encoded bitcoin transaction
+            | 
+            textarea#rawTransaction.form-control(style='height:125px')
+            | 
+            br
+            | 
+            #rawTransactionStatus.alert.hidden
+            | 
+            input#rawSubmitBtn.btn.btn-primary(type='button', value='Submit')
+            | 
+            br
+
+          //-#dev.tab-pane.tab-content
+            h2
+              | Development 
+              small Javascript framework, API and more
+            | 
+            .alert.alert-info This section is currently under development and is subject to change.
+
+          #about.tab-pane.tab-content
+            h2
+              | About 
+              small open source CoinAwesome wallet
+            p Version 1.3
+            p Compatible with CoinAwesome-qt
+            p
+              | Github 
+              a(href='https://github.com/OutCast3k/coinbin/') https://github.com/OutCast3k/coinbin/
+        
+            h3 What is CoinAwesome?
+            p
+              | CoinAwesome is a type of digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds, operating independently of a central bank. See 
+              a(href='http://www.weusecoins.com/', target='_blank') weusecoins.com
+              |  for more information.
+            | 
+            p
+              | If you are looking to buy some AWESOME try 
+              a(href='https://localbitcoins.com/?ch=173j', target='_blank') LocalBitcoins.com
+              | .
+            | 
+            h3 Information
+            p
+              | coinawesome.com is a free and open source project released under the MIT license, originally by 
+              a(href='https://bitcointalk.org/index.php?action=profile;u=34834', target='_blank') OutCast3k
+              |  in 2013. Discussion of the project can be found at 
+              a(href='https://bitcointalk.org/index.php?topic=390046', target='_blank') bitcointalk.org
+              |  during its early testing stages when its primary focus was to develop a proof of concept multisig solution in javascript.
+            | 
+            p
+              | coinawesome.com is run and funded by the generosity of others in terms of 
+              a(href='https://github.com/OutCast3k/coinbin/graphs/contributors', target='_blank') development
+              |  and hosting.
+            | 
+            h3 Privacy
+            | 
+            p
+              | coinawesome.com beleives strongly in privacy, not only do we support the use of TOR, the site does not collect and store IP or transaction data via our servers nor do we store your bitcoins private key. We do route traffic via cloudflare using an SSL certificate.
+            | 
+            h3 Donate
+            | 
+            p
+              | Please donate to 
+              a(href='bitcoin:1CWHWkTWaq1K5hevimJia3cyinQsrgXUvg') 1CWHWkTWaq1K5hevimJia3cyinQsrgXUvg
+              |  if you found this project useful or want to see more features!
+          | 
+          #settings.tab-pane.tab-content
+            h2
+              | Settings 
+              small  making coinawesome.com even better!
+            p
+              | These simple settings below make coinawesome.com one of the most decentralized wallets in the world.
+            .row
+              .col-md-12
+                b Network
+                | : 
+                br
+                p.text-muted Select which network you&apos;d like to use for key pair generation.
+                select#coinjs_coin.form-control
+                  option(value='bitcoin_mainnet', rel='0x00;0x80;0x05;0x488b21e;0x488ade4;coinawesome.com;coinawesome.com') Bitcoin (mainnet)
+                  option(value='litecoin_mainnet', rel='0x30;0xb0;0x05;0x019da462;0x019d9cfe;blockr.io_litecoin;chain.so_litecoin') Litecoin (mainnet)
+                  option(value='shadowcash_mainnet', rel='0x3f;0xbf;0x7d;0xee80286a;0xee8031e8;false;false') ShadowCash (mainnet)
+                  // <option value="bitcoin_testnet" rel="0x6f;0xef;0xc4;0x043587cf;0x04358394;blockr.io_bitcointestnet;false">Bitcoin (testnet)</option>
+                  option(value='custom', rel='0x00;0x80;0x05;0x488b21e;0x488ade4;false;false') Custom
+            #settingsCustom.hidden
+              hr
+              .row
+                .col-md-4
+                  b Pub
+                  | : 
+                  br
+                  input#coinjs_pub.form-control.coinjssetting(type='text')
+                .col-md-4
+                  b Priv
+                  | : 
+                  br
+                  input#coinjs_priv.form-control.coinjssetting(type='text')
+                .col-md-4
+                  b Script Hash (multisig)
+                  | : 
+                  br
+                  input#coinjs_multisig.form-control.coinjssetting(type='text')
+              .row
+                .col-md-6
+                  b HD Pub
+                  | : 
+                  br
+                  input#coinjs_hdpub.form-control.coinjssetting(type='text')
+                .col-md-6
+                  b HD Priv
+                  | : 
+                  br
+                  input#coinjs_hdprv.form-control.coinjssetting(type='text')
+              br
+              .alert.alert-info
+                span.glyphicon.glyphicon-info-sign
+                |  You will not be able to automatically broadcast or retreive your unspent outputs from coinawesome.com when using this setting and will need to use your desktop client instead, however everything else such as creating key pairs, addresses, transaction generation and signing will continue to function normally.
+            hr
+            .row
+              .col-md-12
+                b Broadcast
+                | : 
+                br
+                p.text-muted Select the network you wish to broadcast the transaction via
+                select#coinjs_broadcast.form-control
+                  option(value='coinawesome.com') coinawesome.com (Bitcoin mainnet)
+                  | 
+                  option(value='blockr.io_bitcoinmainnet')  Blockr.io (Bitcoin mainnet)
+            hr
+            .row
+              .col-md-12
+                b Unspent outputs
+                | : 
+                br
+                p.text-muted Select the network you wish to retreive your unspent inputs from
+                select#coinjs_utxo.form-control
+                  option(value='coinawesome.com') coinawesome.com (Bitcoin mainnet)
+            br
+            #statusSettings.hidden.alert
+            input#settingsBtn.btn.btn-primary(type='submit')
+          br
+          p.text-muted
+            | This page uses javascript to generate your addresses and sign your transactions within your browser, this means we 
+            i never
+            |  receive your private keys, this can be independently verified by reviewing the source code on 
+            a(href='https://github.com/OutCast3k/coinbin/', target='_blank') github
+            | . You can even 
+            a(href='https://github.com/OutCast3k/coinbin/archive/master.zip') download
+            |  this page and host it yourself or run it offline!
+          br
+    #footer
+      .container.text-right
+        p.text-muted Version 1.3
+    // wallet confirm send modal
+    #modalWalletConfirm.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+            h4.modal-title Please confirm
+          .modal-body
+            p
+              | You are about to send a transaction to the value of 
+              span#spendAmount 0.00
+              |  BTC
+            br
+            #walletSendConfirmStatus.alert.alert-danger.hidden
+          .modal-footer
+            button#walletConfirmSend.btn.btn-primary(type='button') Send
+            button#confirmClose.btn.btn-default(type='button', data-dismiss='modal') Close
+    // wallet confirm send modal
+    // qrcode modal
+    #modalQrcode.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+            h4.modal-title qrcode
+          .modal-body(align='center')
+            #qrcode
+          .modal-footer
+            button#qrCodeClose.btn.btn-default(type='button', data-dismiss='modal') Close
+    // qrcode modal
+    // qrcode scanner modal
+    #modalQrcodeScanner.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+            h4.modal-title qrcode scanner
+          .modal-body(align='center')
+            select#videoSource.form-control
+            #videoReaderError.hidden Your browser does not offer camera support
+            video#videoReader(muted='', autoplay='', style='width:100%;height:100%')
+            #qrcode-scanner-callback-to.hidden
+          .modal-footer
+            button#qrScanClose.btn.btn-default(type='button', data-dismiss='modal') Close
+    // qrcode scanner modal
+    // mediator modal
+    //-#modalMediator.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+            | 
+            h4.modal-title Transaction Mediation
+          | 
+          .modal-body
+            p
+              | You can add a public key when creating a 
+              i 2-of-3 multi signature address
+              |  and for a low fee your mediator will help with the recovery of the funds should any disputes arise.
+            | 
+            p Should a dispute arise please contact the below address for further information
+            | 
+            .row
+              .col-md-5
+                label Mediator:
+                //
+                  You need to contact us before adding your pubkey
+                  and submitting a pull request on github.
+                  format is: pubkey;email;fee
+                select#mediatorList.form-control
+                  option(value='02b6231cc602740c29436eafbb6448880f4058cc3d2745c709deee313104678277;support@coinawesome.com;1') coinawesome.com
+              | 
+              .col-md-5
+                label Address:
+                |  
+                span.text-muted (for disputes)
+                | 
+                input#mediatorEmail.form-control.address(type='text', value='', readonly='')
+              | 
+              .col-md-2
+                label Fee (%):
+                |  
+                | 
+                input#mediatorFee.form-control.address(type='text', value='', readonly='')
+            | 
+            br
+            | 
+            label Public Key:
+            | 
+            input#mediatorPubkey.form-control.address(type='text', value='', readonly='')
+            | 
+            br
+          | 
+          .modal-footer
+            button#mediatorAddKey.btn.btn-primary(type='button') Add Public Key
+            | 
+            button#mediatorClose.btn.btn-default(type='button', data-dismiss='modal') Close
+    // mediator modal
+    // warning (fee) modal
+    #modalWarningFee.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+            | 
+            h4.modal-title
+              b Warning High Fee!
+          | 
+          .modal-body
+            | Please be aware that you have created a transaction with what seems to be a very high fee of 
+            span#modalWarningFeeAmount
+            |  BTC!
+          | 
+          .modal-footer
+            button#warningFeeClose.btn.btn-primary(type='button', data-dismiss='modal') OK, I&apos;ve got it!
+    // warning (fee) modal
+    #entropybucket.hidden
+
+  include rfooter
